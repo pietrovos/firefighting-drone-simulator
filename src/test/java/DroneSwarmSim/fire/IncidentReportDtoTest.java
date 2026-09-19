@@ -112,7 +112,7 @@ class IncidentReportDtoTest {
     /**
      * Tests that the serialized packet type of an {@link IncidentReport} object is correctly identified as {@link MessageType#INCIDENT_REPORT}.
      * <p>
-     * This method validates the end-to-end serialization and type parsing workflow for an {@link IncidentReport} object.
+     * Validates the serialization and type-parsing round trip for an {@link IncidentReport}.
      * It ensures that when an incident report with specific attributes is serialized into a byte array using
      * {@link PacketBuilder#build(IncidentReport)}, the resulting packet is accurately classified as an INCIDENT_REPORT
      * by {@link PacketParser#getType(byte[])}.

@@ -9,15 +9,10 @@ import java.util.concurrent.ConcurrentHashMap;
 import javax.swing.*;
 import javax.swing.border.Border;
 
-/**
- * The GUI class is responsible for creating and managing the graphical user interface
- * of the application. It provides a grid layout for visualizing a 30x30 tile array
- * and a separate panel for displaying drone assignments.
- */
+/** Shared map and animation behavior for the runtime dashboard. */
 public abstract class GUI {
     public static final int rows = 30;
     public static final int cols = 30;
-    // Dark theme colors
     private static final Color WINDOW_BACKGROUND = new Color(30, 32, 38);
     private static final Color PANEL_BACKGROUND = new Color(40, 44, 52);
     private static final Color GRID_BACKGROUND = new Color(35, 38, 45);
@@ -25,31 +20,28 @@ public abstract class GUI {
     private static final Color ZONE_OUTLINE = new Color(86, 156, 214);
     private static final Color HOME_OUTLINE = new Color(120, 144, 156);
     private static final Color HOME_FILL = new Color(69, 90, 100);
-    // Fault colors
-    private static final Color FAULT_STUCK = new Color(233, 30, 99);        // Pink/magenta
-    private static final Color FAULT_NOZZLE_CLOSED = new Color(26, 188, 156);  // Teal
-    private static final Color FAULT_NOZZLE_OPEN = new Color(155, 89, 182);    // Purple
-    private static final Color FAULT_PACKET_LOSS = new Color(241, 196, 15);    // Yellow
-    private static final Color FAULT_PACKET_CORRUPTION = new Color(230, 126, 34); // Orange
-    private static final Color FAULT_OFFLINE = new Color(99, 110, 114);        // Gray
-    // Text colors
+    private static final Color FAULT_STUCK = new Color(233, 30, 99);
+    private static final Color FAULT_NOZZLE_CLOSED = new Color(26, 188, 156);
+    private static final Color FAULT_NOZZLE_OPEN = new Color(155, 89, 182);
+    private static final Color FAULT_PACKET_LOSS = new Color(241, 196, 15);
+    private static final Color FAULT_PACKET_CORRUPTION = new Color(230, 126, 34);
+    private static final Color FAULT_OFFLINE = new Color(99, 110, 114);
     private static final Color TEXT_PRIMARY = new Color(212, 212, 212);
     private static final Color TEXT_SECONDARY = new Color(150, 150, 150);
     private static final Color BORDER_COLOR = new Color(60, 63, 70);
 
-    // Fire animation colors - cycle through these for flickering effect
     private static final Color[] FIRE_COLORS = {
-        new Color(255, 87, 34),   // Deep orange
-        new Color(255, 152, 0),   // Orange
-        new Color(255, 193, 7),   // Amber/yellow
-        new Color(244, 67, 54),   // Red
-        new Color(255, 112, 67),  // Deep orange light
-        new Color(255, 167, 38),  // Orange light
+        new Color(255, 87, 34),
+        new Color(255, 152, 0),
+        new Color(255, 193, 7),
+        new Color(244, 67, 54),
+        new Color(255, 112, 67),
+        new Color(255, 167, 38),
     };
     private static final int FIRE_ANIMATION_INTERVAL_MS = 150;
 
     JPanel[][] tile;
-    private boolean[][] zoneLabelTiles = new boolean[rows][cols]; // tracks which tile has a zone marker on it
+    private boolean[][] zoneLabelTiles = new boolean[rows][cols];
 
     JFrame mainWindow;
     JPanel grid;
@@ -58,34 +50,32 @@ public abstract class GUI {
     protected final Map<Integer, Zone> zones;
     private final Map<Integer, Point> droneCells = new ConcurrentHashMap<>();
     private final Map<Integer, Deque<Point>> droneMotionPaths = new ConcurrentHashMap<>();
-    private final Map<Integer, Point> faultedDroneCells = new ConcurrentHashMap<>(); // tracks faulted drones separately
-    private final Map<Integer, String> faultedDroneFaults = new ConcurrentHashMap<>(); // fault type for each faulted drone
-    private final Map<Integer, Point> fireCells = new ConcurrentHashMap<>(); // center cell for each fire
-    private final Map<Integer, List<Point>> fireSpreadCells = new ConcurrentHashMap<>(); // all cells for each fire
+    private final Map<Integer, Point> faultedDroneCells = new ConcurrentHashMap<>();
+    private final Map<Integer, String> faultedDroneFaults = new ConcurrentHashMap<>();
+    private final Map<Integer, Point> fireCells = new ConcurrentHashMap<>();
+    private final Map<Integer, List<Point>> fireSpreadCells = new ConcurrentHashMap<>();
     private final Map<Integer, String> fireLabels = new ConcurrentHashMap<>();
-    private final Map<Integer, Point> droppingDroneCells = new ConcurrentHashMap<>(); // drones actively dropping water
-    private final Map<Integer, Integer> droppingDroneZones = new ConcurrentHashMap<>(); // zone each dropping drone is targeting
-    private final Map<Integer, Double> droneWaterLevels = new ConcurrentHashMap<>(); // current water level per drone
-    private final Map<Integer, Double> droneBatteryLevels = new ConcurrentHashMap<>(); // current battery % per drone
-    private final Map<Integer, Double> droneFuelLevels = new ConcurrentHashMap<>(); // current fuel % per drone
+    private final Map<Integer, Point> droppingDroneCells = new ConcurrentHashMap<>();
+    private final Map<Integer, Integer> droppingDroneZones = new ConcurrentHashMap<>();
+    private final Map<Integer, Double> droneWaterLevels = new ConcurrentHashMap<>();
+    private final Map<Integer, Double> droneBatteryLevels = new ConcurrentHashMap<>();
+    private final Map<Integer, Double> droneFuelLevels = new ConcurrentHashMap<>();
     private javax.swing.Timer fireAnimationTimer;
     private javax.swing.Timer waterDropTimer;
     private javax.swing.Timer droneMotionTimer;
     private int fireAnimationFrame = 0;
     private int waterDropFrame = 0;
 
-    // Water drop animation colors - pulse between drone blue and cyan
     private static final Color[] WATER_DROP_DRONE_COLORS = {
-        new Color(52, 152, 219),   // Drone blue
-        new Color(41, 182, 246),   // Light blue
-        new Color(0, 188, 212),    // Cyan
-        new Color(41, 182, 246),   // Light blue
+        new Color(52, 152, 219),
+        new Color(41, 182, 246),
+        new Color(0, 188, 212),
+        new Color(41, 182, 246),
     };
-    // Water splash colors for fire tiles being doused
     private static final Color[] WATER_SPLASH_COLORS = {
-        new Color(100, 181, 246),  // Light blue splash
-        new Color(79, 195, 247),   // Cyan splash
-        new Color(128, 222, 234),  // Aqua splash
+        new Color(100, 181, 246),
+        new Color(79, 195, 247),
+        new Color(128, 222, 234),
     };
     private static final int WATER_DROP_INTERVAL_MS = 200;
     private static final int DRONE_MOTION_INTERVAL_MS = 35;
@@ -98,29 +88,7 @@ public abstract class GUI {
         this(Collections.emptyMap());
     }
 
-    /**
-     * Constructs a new instance of the GUI class and initializes the graphical user interface.
-     * The interface consists of a 30x30 grid of tiles for visualization and a panel for
-     * displaying drone assignments. The method configures the main window, initializes
-     * grid elements with default styling, and sets up the assignment panel.
-     * <p>
-     * In headless environments (e.g., CI/automated tests), Swing components are not
-     * initialized to avoid {@link HeadlessException}. All fields will be {@code null}
-     * in that case and operations guarded accordingly.
-     * <p>
-     * Key features of the GUI:
-     * - The main window is configured with a size of 750x650 pixels and uses a BorderLayout.
-     * - A grid with 30 rows and 30 columns is created, where each cell is styled with a light gray background
-     *   and a black border.
-     * - An assignment panel at the bottom displays drone-to-zone mapping with labels and is styled
-     *   with a titled border labelled "Assignments".
-     * - A legend panel on the right explains tile colours and label symbols.
-     * - Zone outlines are drawn on the grid for each entry in the {@code zones} map.
-     * - The GUI is centered on the screen when created.
-     *
-     * @param zones map of zone ID to {@link Zone} whose boundaries are drawn as outlines on the grid.
-     *              May be {@code null} or empty; null is treated as an empty map.
-     */
+    /** Builds the dashboard when a graphical environment is available. */
     public GUI(Map<Integer, Zone> zones) {
         if (zones == null) zones = Collections.emptyMap();
         this.zones = new HashMap<>(zones);
@@ -135,7 +103,6 @@ public abstract class GUI {
         mainWindow = new JFrame();
         grid = new JPanel();
 
-        // Use gradient panels for visual polish
         Color gradientTop = new Color(48, 52, 62);
         Color gradientBottom = new Color(35, 38, 46);
         assignmentPanel = new GradientPanel(gradientTop, gradientBottom);
@@ -148,7 +115,6 @@ public abstract class GUI {
         mainWindow.setLayout(new BorderLayout(14, 14));
         mainWindow.getContentPane().setBackground(WINDOW_BACKGROUND);
 
-        // Grid with subtle rounded border and shadow
         grid.setLayout(new GridLayout(rows, cols, 0, 0));
         grid.setBackground(GRID_BACKGROUND);
         grid.setBorder(BorderFactory.createCompoundBorder(
@@ -171,12 +137,10 @@ public abstract class GUI {
         }
         drawHomeSpot();
 
-        // Assignment panel with gradient, shadow, and rounded corners
         assignmentPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 8, 6));
         assignmentPanel.setPreferredSize(new Dimension(600, 56));
         assignmentPanel.setBorder(createStyledBorder(4, 10, 8));
 
-        // Legend panel with gradient, shadow, and rounded corners
         legendPanel.setLayout(new GridBagLayout());
         legendPanel.setBorder(createStyledBorder(4, 10, 12));
 
@@ -228,22 +192,6 @@ public abstract class GUI {
         if (mainWindow != null) mainWindow.setVisible(true);
     }
 
-    /**
-     * Updates the visual appearance of a specific tile in the grid.
-     * The tile's background colour is set according to its type.
-     * The update is dispatched on the Event Dispatch Thread (EDT) to ensure thread safety.
-     *
-     * @param t   The type of the tile, represented as a {@link TileTypes} value.
-     *            Determines the colour applied:
-     *            - {@code FIRE}: Red
-     *            - {@code FIRE_EXTINGUISHED}: Green
-     *            - {@code NEUTRAL}: Light gray
-     *            - {@code DRONE_LOCATION}: Orange
-     *            - {@code null} or any other value: Black
-     * @param row The row index of the tile to update, where 0 is the topmost row.
-     * @param col The column index of the tile to update, where 0 is the leftmost column.
-     * @param labelData string to be used as a label for the updated square
-     */
     public void updateTile(TileTypes t, int row, int col, String labelData) {
         if (tile == null) return;
         if (row < 0 || row >= rows || col < 0 || col >= cols) return;
@@ -302,19 +250,6 @@ public abstract class GUI {
         });
     }
 
-    /**
-     * Override to allow update tile to be called without the data parameter.
-     *
-     * @param t   The type of the tile, represented as a {@link TileTypes} value.
-     *            Determines the colour applied:
-     *            - {@code FIRE}: Red
-     *            - {@code FIRE_EXTINGUISHED}: Green
-     *            - {@code NEUTRAL}: Light gray
-     *            - {@code DRONE_LOCATION}: Orange
-     *            - {@code null} or any other value: Black
-     * @param row The row index of the tile to update, where 0 is the topmost row.
-     * @param col The column index of the tile to update, where 0 is the leftmost column.
-     */
     public void updateTile(TileTypes t, int row, int col){
         updateTile(t,row,col,"");
     }

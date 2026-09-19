@@ -1,96 +1,90 @@
 # Firefighting Drone Swarm Simulator
 
-A Java control-system simulation that coordinates a swarm of drones responding to fire incidents. The scheduler, drone fleet, and fire-incident generator run as separate processes and communicate over UDP. A Swing dashboard displays incidents, assignments, drone telemetry, faults, and simulation metrics in real time.
+A Java simulation of a dispatcher coordinating firefighting drones over UDP. It models incident intake, priority queueing, drone missions, telemetry, injected faults, recovery and reassignment, with a Swing dashboard for runtime monitoring.
 
-This repository is a sanitized portfolio snapshot of a four-person SYSC 3303 course project at Carleton University. Pietro Adamvoski implemented the application represented here; the original team also participated in the course submission, documentation, review, and presentation process. Course reports, student identifiers, archived iterations, and grading material are intentionally excluded.
+This was a four-person Carleton University SYSC 3303 course project by Pietro Adamvoski, Avery Robertson, Adam Haddadin, and Fareen Lavji. This repository is a portfolio snapshot of the team's application, not a sole-authored project.
 
-## Highlights
+## Pietro's Contributions
 
-- Runs the Scheduler, Drone, and Fire Incident subsystems as independent Java processes.
-- Registers multiple drones dynamically and assigns queued incidents to available drones.
-- Models each mission with state transitions from idle through travel, agent drop, return, and refill.
-- Exchanges registration, assignment, telemetry, incident, acknowledgement, and fault messages over UDP.
-- Injects simulated faults and reassigns incidents when a drone becomes unavailable.
-- Tracks water, battery, fuel, response time, completion time, queue depth, utilization, and fleet distance.
-- Includes a Swing dashboard and a launcher for a configurable fleet, defaulting to 20 drones.
-- Uses JUnit 5 unit and integration tests for scheduling, state transitions, UDP messages, fault recovery, and complete mission flows.
+Pietro's substantial direct contributions included:
+
+- the initial Scheduler and Fire Incident subsystem implementations
+- task assignment and drone-status coordination
+- the runtime GUI and telemetry display
+- fault-recovery and incident-reassignment refinements
+- scheduler, fault-handling, and queue-behaviour tests
+- the foundation for simulation metrics
+- the final launcher and default 20-drone workflow
+
+Avery Robertson, Adam Haddadin, and Fareen Lavji were project teammates and contributors to the shared course project. The repository intentionally does not attribute the complete implementation to Pietro or attempt to assign every remaining file to one person.
 
 ## Architecture
 
+The simulation runs as three Java processes:
+
 ```text
-Fire Incident process ── IncidentReport ──> Scheduler process
-                                               │
-                                  AssignTask / telemetry
-                                               │
-                                               v
-                                        Drone processes
-                                               │
-                                      status and faults
-                                               │
-                                               v
-                                      Runtime dashboard
+Fire Incident process  -- incident reports -->  Scheduler process
+                                                    |
+                                              assignments
+                                                    |
+                                                    v
+Drone process (one thread per drone)  -- telemetry/faults --> Scheduler
+                                                    |
+                                                    v
+                                           Swing dashboard
 ```
 
-The Scheduler owns the incident queue and fleet state. The Fire Incident process reads timestamped scenarios from CSV and sends incidents to the Scheduler. Each Drone process registers itself, receives assignments, advances through its state machine, and reports telemetry or faults. Shared packet builders and parsers define the UDP message contracts.
-
-Important packages:
-
-- `scheduler`: dispatch, queueing, reassignment, fault handling, logging, and metrics
-- `drone`: drone registration, mission state machine, resource use, and telemetry
-- `fire`: scenario parsing and timed incident delivery
-- `net/udp`: UDP endpoints, senders, receivers, and packet serialization
-- `messaging`: typed messages exchanged between processes
-- `ui`: live simulation dashboard
+- **Scheduler process:** owns the incident queue, tracks fleet state, dispatches work, handles faults and reassignment, records metrics, and hosts the dashboard.
+- **Drone process:** `DroneMain` starts one `DroneSubsystem` thread per drone. The default workflow therefore uses one drone process containing 20 drone threads, not 20 independent drone processes.
+- **Fire Incident process:** reads timestamped events from CSV and sends them to the scheduler on a compressed clock.
+- **UDP messages:** registration, incident, assignment, acknowledgement, telemetry, and fault packets are serialized by the shared `messaging` and `net.udp` packages.
 
 ## Requirements
 
 - Java 17 or later
 - Maven 3.8 or later
-- A graphical desktop session for the Swing dashboard
-- Bash for `run-demo.sh`
+- Bash and a graphical desktop session for the launcher and Swing dashboard
 
-## Run the simulation
-
-The launcher compiles the project, starts the Scheduler and dashboard, asks how many drones to launch, and starts the Fire Incident process:
+## Run the Demo
 
 ```bash
 ./run-demo.sh
 ```
 
-Press `Ctrl+C` to stop the simulation and clean up the Java processes started by the launcher.
+The launcher compiles the project, starts the Scheduler, asks for a fleet size, starts the drones, and then starts event playback. Press `Ctrl+C` to stop the processes launched by the script.
 
-To run the processes manually in separate terminals:
+The default uses 20 drone threads and `src/Sample_event_file.csv`, a short five-incident fault scenario. Its event timestamps span 1.2 simulated seconds and are dispatched in well under one second on the configured compressed clock; drone missions and fault countdowns continue after the final event is sent.
+
+The full 50-event scenario remains available at `src/Final_event_file_w26.csv`. Its timestamps span 7:51:13 of simulated time, or approximately 9 minutes 26 seconds of event playback at the configured 20 ms per simulated second, plus time for outstanding missions to finish. Run it by passing the file to the Fire Incident process:
 
 ```bash
 mvn compile
 mvn exec:java -Dexec.mainClass="DroneSwarmSim.scheduler.SchedulerMain"
 mvn exec:java -Dexec.mainClass="DroneSwarmSim.drone.DroneMain"
-mvn exec:java -Dexec.mainClass="DroneSwarmSim.fire.FireIncidentMain"
+mvn exec:java -Dexec.mainClass="DroneSwarmSim.fire.FireIncidentMain" -Dexec.args="src/Final_event_file_w26.csv"
 ```
 
-Pass a drone ID to start one drone instead of the default fleet:
+Run those commands in separate terminals. Passing a drone ID starts only that drone thread instead of the configured fleet:
 
 ```bash
 mvn exec:java -Dexec.mainClass="DroneSwarmSim.drone.DroneMain" -Dexec.args="3"
 ```
 
-Sample event and zone files are under `src/`. Runtime logs are written to `logs/` and ignored by Git.
-
-## Test
+## Tests
 
 ```bash
 mvn test
 ```
 
-The suite covers scheduler selection and queue order, drone state transitions and capacity, fault recovery, CSV parsing, UDP packet round trips, and multi-process mission scenarios. GUI tests cover model-facing behavior; display-dependent behavior still requires manual validation.
+The suite contains unit and integration tests for scheduler selection and queue order, drone state and capacity changes, fault recovery, CSV parsing, packet contracts, UDP loopback, and mission coordination. The `*IT` tests exercise multiple components through local UDP sockets in one test JVM; they are integration tests, not a production-like end-to-end deployment. GUI tests cover model-facing behavior, while visual behavior still requires manual checking in a desktop session.
 
-## Known limitations
+## Limitations
 
-- UDP delivery is intentionally simple and does not provide production-grade reliability or authentication.
-- The simulation uses configurable timing and resource constants; measured results are not hard real-time guarantees.
-- The launcher uses `pkill` to stop processes whose command line contains this project's main-class names. Run it only in a development environment.
-- The dashboard requires a graphical environment and is not designed for a headless server.
+- UDP transport has no delivery guarantee, authentication, or production hardening.
+- Timing and resource values are simulation constants, not real-time or physical-performance claims.
+- The dashboard requires a graphical environment.
+- `run-demo.sh` uses `pkill` against this project's main-class names during cleanup and is intended for local development only.
 
-## Attribution
+## Reuse
 
-Created for Carleton University's SYSC 3303 course with Avery Robertson, Adam Haddadin, and Fareen Lavji. This public snapshot preserves the application and tests while omitting private academic records and submission artifacts.
+No open-source license or team permission to grant one is documented in this snapshot. The source is available for portfolio review, but no permission to copy, modify, or redistribute it is granted here.

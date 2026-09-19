@@ -41,7 +41,7 @@ class MissionLifecycleTest {
     }
 
     /**
-     * Exercises all four lifecycle phases in a single end-to-end scenario:
+     * Exercises all four lifecycle phases in one integration scenario:
      * <ul>
      *   <li>QUEUED   – incident sent before any drone is available; no AssignTask is emitted.</li>
      *   <li>ASSIGNED – drone registers; the previously queued incident is assigned.</li>

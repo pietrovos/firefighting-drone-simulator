@@ -84,46 +84,16 @@ public class SimulationMetrics {
             this.lastY = 0;
         }
 
-        /**
-         * Retrieves the unique identifier for the drone.
-         *
-         * @return The unique drone ID as an integer.
-         */
         public int getDroneId() { return droneId; }
 
-        /**
-         * Retrieves the total time, in milliseconds, that the drone has been idle.
-         *
-         * @return The total idle time in milliseconds as a long value.
-         */
         public synchronized long getTotalIdleMs() { return totalIdleMs; }
 
-        /**
-         * Retrieves the total time, in milliseconds, that the drone has spent in flight.
-         *
-         * @return The total flight time in milliseconds as a long value.
-         */
         public synchronized long getTotalFlightMs() { return totalFlightMs; }
 
-        /**
-         * Retrieves the total distance travelled by the drone.
-         *
-         * @return The total distance travelled as a double value.
-         */
         public synchronized double getTotalDistanceTraveled() { return totalDistanceTraveled; }
 
-        /**
-         * Retrieves the total number of trips completed by the drone.
-         *
-         * @return The total number of trips completed as an integer.
-         */
         public synchronized int getTripsCompleted() { return tripsCompleted; }
 
-        /**
-         * Retrieves the total number of faults recorded for the drone.
-         *
-         * @return The total fault count as an integer.
-         */
         public synchronized int getFaultCount() { return faultCount; }
 
         /**

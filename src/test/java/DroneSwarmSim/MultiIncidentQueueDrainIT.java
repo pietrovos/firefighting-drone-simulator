@@ -17,26 +17,9 @@ import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicReference;
 
-/**
- * Integration tests verifying multi-incident behaviour and balanced load distribution.
- *
- * <p>These tests cover two V&V plan items:
- * <ol>
- *   <li><b>MultiIncidentQueueDrainIT</b> – incidents of mixed severities are all assigned
- *       and no incident is lost or permanently queued.</li>
- *   <li><b>Balanced Load Demo</b> – with ≥3 drones and 5+ incidents the scheduler
- *       distributes work roughly equally (each drone receives between 1 and 3 tasks).</li>
- * </ol>
- *
- * <p>Mock drones automatically report back {@code IDLE} after each assignment so
- * the scheduler can recycle them for the next waiting incident.
- */
+/** Integration tests for queue draining and load distribution with mock drones. */
 @DisplayName("Multi-Incident Queue-Drain and Balanced-Load Integration Tests")
 class MultiIncidentQueueDrainIT {
-
-    // -----------------------------------------------------------------------
-    // Helpers
-    // -----------------------------------------------------------------------
 
     private File createZoneFile(String... dataLines) throws Exception {
         File f = File.createTempFile("qi_zones", ".csv");
@@ -47,10 +30,6 @@ class MultiIncidentQueueDrainIT {
         }
         return f;
     }
-
-    // -----------------------------------------------------------------------
-    // Tests
-    // -----------------------------------------------------------------------
 
     /**
      * Verifies that all queued incidents of mixed severities (LOW, MODERATE, HIGH) are

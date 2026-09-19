@@ -97,55 +97,14 @@ public class DroneSubsystem implements Runnable {
         this.listenPort = listenPort;
     }
 
-    /**
-     * Retrieves the unique identifier of the drone.
-     *
-     * @return the integer ID assigned to this drone.
-     */
     public int getDroneId() { return droneId; }
 
-    /**
-     * Retrieves the current operational state of the drone.
-     * <p>
-     * The state indicates the drone's status and activity, such as whether it is
-     * idle, en route to a task location, actively performing a task, or experiencing
-     * a fault condition.
-     *
-     * @return the current operational state of the drone as a {@code DroneState} enum value.
-     */
     public DroneState getState() { return state; }
 
-    /**
-     * Retrieves the current water level of the drone.
-     * <p>
-     * The water level represents the remaining amount of liquid agent
-     * available for the drone to perform tasks such as firefighting or irrigation.
-     *
-     * @return the current water level as a double value, where the unit
-     *         corresponds to the drone's configured measurement system.
-     */
     public double getWater() { return water; }
 
-    /**
-     * Retrieves the current battery level of the drone.
-     * <p>
-     * The battery level represents the remaining charge in the drone's battery
-     * as a percentage within the range of 0.0 to 100.0.
-     *
-     * @return the current battery level as a double value, where 0.0 indicates
-     *         a completely discharged battery and 100.0 indicates a fully charged battery.
-     */
     public double getBattery() { return battery; }
 
-    /**
-     * Retrieves the current fuel level of the drone.
-     * <p>
-     * The fuel level represents the remaining amount of fuel available for the drone's
-     * operations such as movement and other tasks that consume fuel.
-     *
-     * @return the current fuel level as a double value, where the unit corresponds
-     *         to the drone's configured measurement system.
-     */
     public double getFuel() { return fuel; }
 
     /**

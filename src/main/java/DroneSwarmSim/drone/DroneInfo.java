@@ -3,35 +3,27 @@ package DroneSwarmSim.drone;
 import DroneSwarmSim.messaging.IncidentReport;
 import DroneSwarmSim.model.Severity;
 
-/**
- * Represents information about an individual drone in the system, including its
- * identifier, host information, port, current state, position, and scheduling
- * metadata used for load balancing and path-through optimization.
- * <p>
- * This class encapsulates essential details about a drone, which can be used
- * for communication, monitoring, and task assignment purposes within the
- * drone swarm simulation system.
- */
+/** Scheduler-side state for a registered drone. */
 public class DroneInfo {
-    private final int droneId; // Unique identifier for the drone.
-    private final String host; // Hostname or IP address where the drone can be reached.
-    private final int port; // Port number used for communication with the drone.
-    private volatile DroneState state; // Current operational state of the drone.
-    private volatile double xPos; // Current x-coordinate of the drone's position.'
-    private volatile double yPos; // Current y-coordinate of the drone's position.'
-    private volatile double water; // Current water level of the drone.
-    private volatile double battery; // Current battery level of the drone.
-    private volatile double fuel; // Current fuel level of the drone.
-    private volatile int completedAssignments; // Total number of assignments completed by this drone.
-    private volatile Integer assignedZoneId; // ID of the zone currently assigned to the drone.
-    private volatile int zonesServiced; // Total number of zones serviced by this drone.
-    private volatile Severity assignedSeverity; // Severity of the incident currently assigned to the drone.
-    private volatile double targetZoneCenterX; // X-coordinate of the centre of the zone the drone is heading towards.
-    private volatile double targetZoneCenterY; // Y-coordinate of the centre of the zone the drone is heading towards.
-    private volatile IncidentReport currentIncident; // Incident report currently assigned to this drone.
-    private volatile long dispatchTimeMs; // Time (ms since epoch) when this drone was dispatched to its current task.
-    private volatile long lastUpdateTimeMs; // Timestamp of the last telemetry update received from the drone.
-    private volatile boolean offline; // Whether this drone has been taken offline due to a hard fault.
+    private final int droneId;
+    private final String host;
+    private final int port;
+    private volatile DroneState state;
+    private volatile double xPos;
+    private volatile double yPos;
+    private volatile double water;
+    private volatile double battery;
+    private volatile double fuel;
+    private volatile int completedAssignments;
+    private volatile Integer assignedZoneId;
+    private volatile int zonesServiced;
+    private volatile Severity assignedSeverity;
+    private volatile double targetZoneCenterX;
+    private volatile double targetZoneCenterY;
+    private volatile IncidentReport currentIncident;
+    private volatile long dispatchTimeMs;
+    private volatile long lastUpdateTimeMs;
+    private volatile boolean offline;
 
     /**
      * Constructs a new DroneInfo instance with the specified drone identifier,
@@ -58,74 +50,24 @@ public class DroneInfo {
         this.offline = false;
     }
 
-    /**
-     * Retrieves the unique identifier of the drone.
-     *
-     * @return the unique drone ID as an integer.
-     */
     public int getDroneId() { return droneId; }
 
-    /**
-     * Retrieves the hostname or IP address where the drone can be reached.
-     *
-     * @return the hostname or IP address as a String.
-     */
     public String getHost() { return host; }
 
-    /**
-     * Retrieves the port number used for communication with the drone.
-     *
-     * @return the port number as an integer.
-     */
     public int getPort() { return port; }
 
-    /**
-     * Retrieves the current operational state of the drone.
-     *
-     * @return the current state of the drone as a {@code DroneState} enum value.
-     */
     public DroneState getState() { return state; }
 
-    /**
-     * Retrieves the current water level of the drone.
-     *
-     * @return the water level as a double.
-     */
     public double getWater() { return water; }
 
-    /**
-     * Retrieves the drone's current battery level.
-     *
-     * @return battery level in percentage (0.0 – 100.0).
-     */
     public double getBattery() { return battery; }
 
-    /**
-     * Retrieves the drone's current fuel level.
-     *
-     * @return fuel level in percentage (0.0 – 100.0).
-     */
     public double getFuel() { return fuel; }
 
-    /**
-     * Retrieves the total number of assignments that this drone has completed.
-     *
-     * @return the number of completed assignments as an integer.
-     */
     public int getCompletedAssignments() { return completedAssignments; }
 
-    /**
-     * Retrieves the ID of the zone currently assigned to the drone.
-     *
-     * @return the assigned zone ID as an {@code Integer}, or {@code null} if the drone has no assigned zone.
-     */
     public Integer getAssignedZoneId() { return assignedZoneId; }
 
-    /**
-     * Updates the current operational state of the drone.
-     *
-     * @param state the new state to be assigned to the drone, represented as a {@code DroneState} enum value.
-     */
     public void setState(DroneState state) { this.state = state; }
 
     /**
@@ -151,31 +93,14 @@ public class DroneInfo {
         this.lastUpdateTimeMs = System.currentTimeMillis();
     }
 
-    /**
-     * Assigns the specified zone ID to the drone.
-     *
-     * @param zoneId the unique identifier of the zone to be assigned to the drone
-     */
     public void assignZone(int zoneId) {
         this.assignedZoneId = zoneId;
     }
 
-    /**
-     * Clears the zone currently assigned to the drone by setting the
-     * `assignedZoneId` field to {@code null}. This indicates that the drone
-     * is no longer associated with any specific zone.
-     */
     public void clearAssignedZone() {
         this.assignedZoneId = null;
     }
 
-    /**
-     * Increments the count of completed assignments by 1.
-     * <p>
-     * This method updates the value of the 'completedAssignments' variable
-     * by increasing its current value by one. It is typically used to track
-     * progress or completion of assignments in a system or application.
-     */
     public void incrementCompletedAssignments() { completedAssignments++; }
 
     /**
@@ -189,64 +114,20 @@ public class DroneInfo {
         this.yPos = yPos;
     }
 
-    /**
-     * Returns the drone's last-known x-coordinate.
-     *
-     * @return x-coordinate
-     */
     public double getXPos() { return xPos; }
 
-    /**
-     * Returns the drone's last-known y-coordinate.
-     *
-     * @return y-coordinate
-     */
     public double getYPos() { return yPos; }
 
-    /**
-     * Returns the total number of zones that have been assigned to this drone.
-     * Used by the scheduler for load-balancing decisions.
-     *
-     * @return zones-serviced count
-     */
     public int getZonesServiced() { return zonesServiced; }
 
-    /**
-     * Increments the count of zones serviced by the entity.
-     * This method increases the value of the internal field representing
-     * the number of zones serviced by one.
-     */
     public void incrementZonesServiced() { zonesServiced++; }
 
-    /**
-     * Returns the severity of the incident currently assigned to this drone,
-     * or {@code null} if the drone is idle.
-     *
-     * @return current assigned severity
-     */
     public Severity getAssignedSeverity() { return assignedSeverity; }
 
-    /**
-     * Sets the severity of the incident currently assigned to this drone.
-     *
-     * @param severity assigned severity, or {@code null} to clear
-     */
     public void setAssignedSeverity(Severity severity) { this.assignedSeverity = severity; }
 
-    /**
-     * Returns the x-coordinate of the centre of the zone the drone is currently
-     * heading towards (used for path-through optimization).
-     *
-     * @return target zone centre x
-     */
     public double getTargetZoneCenterX() { return targetZoneCenterX; }
 
-    /**
-     * Returns the y-coordinate of the centre of the zone the drone is currently
-     * heading towards (used for path-through optimization).
-     *
-     * @return target zone centre y
-     */
     public double getTargetZoneCenterY() { return targetZoneCenterY; }
 
     /**
@@ -262,20 +143,8 @@ public class DroneInfo {
         this.targetZoneCenterY = y;
     }
 
-    /**
-     * Returns the incident report currently assigned to this drone, or {@code null}
-     * if the drone is idle.  Stored so the scheduler can re-queue the original
-     * incident if the drone is redirected mid-flight.
-     *
-     * @return current incident report
-     */
     public IncidentReport getCurrentIncident() { return currentIncident; }
 
-    /**
-     * Stores the incident report that corresponds to the drone's current assignment.
-     *
-     * @param incident the incident being handled, or {@code null} to clear
-     */
     public void setCurrentIncident(IncidentReport incident) { this.currentIncident = incident; }
 
     /**
@@ -286,25 +155,10 @@ public class DroneInfo {
      */
     public void setDispatchTimeMs(long timeMs) { this.dispatchTimeMs = timeMs; }
 
-    /**
-     * Returns the dispatch timestamp in milliseconds, or 0 if the drone is not on a mission.
-     *
-     * @return dispatch time in ms since epoch
-     */
     public long getDispatchTimeMs() { return dispatchTimeMs; }
 
-    /**
-     * Returns the timestamp (ms since epoch) of the most recent DroneUpdate received.
-     *
-     * @return last update time in ms since epoch
-     */
     public long getLastUpdateTimeMs() { return lastUpdateTimeMs; }
 
-    /**
-     * Returns whether this drone has been taken offline due to a hard fault.
-     *
-     * @return {@code true} if the drone is permanently offline
-     */
     public boolean isOffline() { return offline; }
 
     /**
@@ -315,12 +169,6 @@ public class DroneInfo {
         this.state = DroneState.FAULTED;
     }
 
-    /**
-     * Returns a string representation of the DroneInfo object. The string includes
-     * the drone's unique identifier, host address, port, and current state.
-     *
-     * @return a string representation of the DroneInfo object.
-     */
     @Override
     public String toString() {
         return "DroneInfo{droneId=" + droneId + ", host='" + host

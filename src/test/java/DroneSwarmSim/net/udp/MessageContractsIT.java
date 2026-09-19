@@ -17,7 +17,7 @@ import java.util.concurrent.*;
  * Integration tests for validating message contracts in the drone swarm simulation system.
  * These tests ensure that messages can be serialized, transmitted, and deserialized correctly
  * between components using UDP communication. Each test is focused on a specific message type
- * and checks the integrity and correctness of the data through end-to-end processing.
+ * and checks data integrity across the packet builder and parser boundary.
  * <p>
  * The tests cover the following message types:
  * - IncidentReport: Validates the structure and contents of incident reports.

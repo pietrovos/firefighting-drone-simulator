@@ -22,7 +22,7 @@ import java.util.concurrent.*;
  * using a basic scenario involving two drones.
  * <p>
  * This test class focuses on verifying tasks such as assignment of incidents to drones,
- * registration of drones with the scheduler, and the end-to-end flow of handling an incident
+ * registration of drones with the scheduler, and the integrated flow of handling an incident
  * until mission completion.
  */
 @DisplayName("Two-Drones Basic Flow Integration Test")
