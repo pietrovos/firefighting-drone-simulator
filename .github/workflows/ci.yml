@@ -1,0 +1,47 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+          cache: maven
+
+      - name: Build and test
+        run: mvn -B verify
+
+      - name: Coverage summary
+        if: always()
+        run: |
+          python3 - <<'PY' >> "$GITHUB_STEP_SUMMARY"
+          import csv
+          rows = list(csv.DictReader(open('target/site/jacoco/jacoco.csv')))
+          def pct(rows, kind):
+              missed = sum(int(r[kind + '_MISSED']) for r in rows)
+              covered = sum(int(r[kind + '_COVERED']) for r in rows)
+              return 100 * covered / (missed + covered)
+          print('## Coverage\n')
+          print('| Package | Line | Branch |')
+          print('| --- | --- | --- |')
+          for pkg in sorted({r['PACKAGE'] for r in rows}):
+              sub = [r for r in rows if r['PACKAGE'] == pkg]
+              print(f'| {pkg} | {pct(sub, "LINE"):.0f}% | {pct(sub, "BRANCH"):.0f}% |')
+          print(f'| **Total** | **{pct(rows, "LINE"):.0f}%** | **{pct(rows, "BRANCH"):.0f}%** |')
+          PY
+
+      - name: Upload coverage report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: jacoco-report
+          path: target/site/jacoco/

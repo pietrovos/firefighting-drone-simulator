@@ -1,5 +1,7 @@
 # Firefighting Drone Swarm Simulator
 
+[![CI](https://github.com/pietrovos/firefighting-drone-simulator/actions/workflows/ci.yml/badge.svg)](https://github.com/pietrovos/firefighting-drone-simulator/actions/workflows/ci.yml)
+
 I worked on this Java simulator to coordinate a fleet of firefighting drones
 over UDP. Fire incidents enter a priority queue, and the scheduler assigns an
 available drone to each mission. Drones send back their position and state as
@@ -132,6 +134,11 @@ mission coordination. Tests ending in `IT` run several components through local
 UDP sockets in one JVM. Their scope is component integration; the full
 three-process launcher needs a separate run. The GUI tests check the dashboard's
 state handling. I check the rendered dashboard in a desktop session.
+
+GitHub Actions runs all 104 tests headless on every push and pull request.
+`mvn verify` also writes a JaCoCo coverage report to `target/site/jacoco/`.
+Line coverage is 84% outside the Swing UI package: 87% for the scheduler and
+97% for the UDP and messaging code.
 
 ## Demo, reports, and design documents
 
