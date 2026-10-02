@@ -5,9 +5,9 @@ set -euo pipefail
 DEFAULT_DRONES=20
 
 cleanup() {
-  pkill -f "DroneSwarmSim.drone.DroneMain" 2>/dev/null || true
-  pkill -f "DroneSwarmSim.scheduler.SchedulerMain" 2>/dev/null || true
-  pkill -f "DroneSwarmSim.fire.FireIncidentMain" 2>/dev/null || true
+  pkill -f "droneswarmsim.drone.DroneMain" 2>/dev/null || true
+  pkill -f "droneswarmsim.scheduler.SchedulerMain" 2>/dev/null || true
+  pkill -f "droneswarmsim.fire.FireIncidentMain" 2>/dev/null || true
 }
 
 show_error() {
@@ -59,25 +59,25 @@ drone_count=$(prompt_drone_count)
 
 mvn compile
 
-mvn exec:java -Dexec.mainClass="DroneSwarmSim.scheduler.SchedulerMain" &
+mvn exec:java -Dexec.mainClass="droneswarmsim.scheduler.SchedulerMain" &
 scheduler_pid=$!
 
 sleep 3
 
 drone_pids=()
 if (( drone_count == DEFAULT_DRONES )); then
-  mvn exec:java -Dexec.mainClass="DroneSwarmSim.drone.DroneMain" &
+  mvn exec:java -Dexec.mainClass="droneswarmsim.drone.DroneMain" &
   drone_pids+=("$!")
 else
   for ((drone_id=0; drone_id<drone_count; drone_id++)); do
-    mvn exec:java -Dexec.mainClass="DroneSwarmSim.drone.DroneMain" -Dexec.args="$drone_id" &
+    mvn exec:java -Dexec.mainClass="droneswarmsim.drone.DroneMain" -Dexec.args="$drone_id" &
     drone_pids+=("$!")
   done
 fi
 
 sleep 2
 
-mvn exec:java -Dexec.mainClass="DroneSwarmSim.fire.FireIncidentMain" &
+mvn exec:java -Dexec.mainClass="droneswarmsim.fire.FireIncidentMain" &
 fire_pid=$!
 
 wait "$fire_pid"

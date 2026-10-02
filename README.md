@@ -2,9 +2,11 @@
 
 [![CI](https://github.com/pietrovos/firefighting-drone-simulator/actions/workflows/ci.yml/badge.svg)](https://github.com/pietrovos/firefighting-drone-simulator/actions/workflows/ci.yml)
 
+![Mission-control dashboard during the final 20-drone scenario, sped up 5x](docs/media/dashboard.gif)
+
 I worked on this Java simulator to coordinate a fleet of firefighting drones
-over UDP. Fire incidents enter a priority queue, and the scheduler assigns an
-available drone to each mission. Drones send back their position and state as
+over UDP. Fire incidents enter a queue, and the scheduler sends available
+drones to each fire. Drones send back their position and state as
 they work. The simulation can inject communication failures, stuck drones, and
 nozzle faults to test recovery and incident reassignment. You can watch the
 simulation through a Swing dashboard.
@@ -14,9 +16,8 @@ simulation through a Swing dashboard.
 I built this with Avery Robertson, Adam Haddadin, and Fareen Lavji for SYSC 3303
 at Carleton University. This is my portfolio copy of our team's application,
 based on the final submission with an updated mission-control dashboard. The
-CSV inputs, Maven build file, and launcher match what we submitted. I also kept
-the submitted tests, with corrections to the metrics API calls and queued-task
-test timing.
+CSV scenarios are the ones we submitted. I also kept the submitted tests, with
+corrections to the metrics API calls and queued-task test timing.
 
 I wrote the initial Scheduler and Fire Incident subsystems. Later, I worked on
 task and status coordination, the runtime dashboard and telemetry display,
@@ -27,6 +28,51 @@ the 20-drone demonstration.
 My teammates contributed substantial parts of the drone subsystem, UDP
 architecture, fault infrastructure, tests, documentation, logging, and resource
 simulation.
+
+## What I added after the course
+
+- **Water-matched dispatch.** Our submitted scheduler sent one drone per zone
+  at a time. Each drone carries 15 L, but a high-severity fire needs 30 L, so
+  big fires waited for a second trip while most of the fleet sat idle. The
+  scheduler now sends enough drones at once to cover the water a fire still
+  needs, counting drones already flying there. See `DispatchPolicy` and
+  `Scheduler.assignDrone`. The old behaviour is still available as
+  `SINGLE_DRONE`.
+- **A headless benchmark.** `HeadlessSimulation` runs the real scheduler,
+  drone threads, and UDP messaging without the dashboard. `DispatchBenchmark`
+  runs each policy several times in parallel JVMs and writes the
+  [results](docs/benchmarks/dispatch-policy.md).
+- **Fixes the new policy exposed.** A drone could be "redirected" to the zone
+  it was already flying to, and the scheduler could miss the end of the
+  scenario when the last queued item was stale. Both have regression tests.
+- **CI and coverage.** GitHub Actions builds and tests every push and reports
+  JaCoCo coverage.
+- **Smaller cleanups.** Drone tiles on the map showed raw HTML, the package is
+  now the conventional lowercase `droneswarmsim`, and the scenario files moved
+  to `scenarios/`.
+
+### Benchmark results
+
+On our final 50-fire scenario with 20 drones, three runs per policy:
+
+| Policy | Avg response | Avg extinguish | P95 extinguish | Max extinguish |
+| --- | ---: | ---: | ---: | ---: |
+| `SINGLE_DRONE` (submitted) | 3.3 s | 12.2 s | 17.2 s | 20.0 s |
+| `WATER_MATCHED` (new default) | 3.2 s | 7.3 s | 8.8 s | 9.0 s |
+
+Water-matched dispatch cuts the average time from report to extinguished by
+40% and the 95th percentile by 49%, with all 50 fires put out in every run.
+Response time barely changes, because the first drone leaves just as quickly
+under both policies. Runs vary by less than 0.1%. To reproduce them (about 10
+minutes, with runs in parallel):
+
+```bash
+mvn compile
+java -cp target/classes droneswarmsim.benchmark.DispatchBenchmark runs=3 drones=10,20
+```
+
+`SchedulerMain` takes the policy as its second argument, for example
+`-Dexec.args="scenarios/Final_zone_file_w26.csv single-drone"`.
 
 ## Processes and messages
 
@@ -57,7 +103,8 @@ acknowledgements, telemetry, and fault reports.
 
 - Java 17 or later
 - Maven 3.8 or later
-- Bash and a graphical desktop session
+- Bash and a graphical desktop session for the dashboard (the benchmark runs
+  headless)
 
 ## Running the demo
 
@@ -69,7 +116,7 @@ I use the launcher to start the simulation:
 
 It asks how many drones to run, compiles the project, and starts the scheduler,
 drones, and event playback. It defaults to 20 drone threads using
-`src/Final_event_file_w26.csv` and `src/Final_zone_file_w26.csv`. If you have
+`scenarios/Final_event_file_w26.csv` and `scenarios/Final_zone_file_w26.csv`. If you have
 Zenity or KDialog installed, the drone-count prompt opens in a dialog.
 Otherwise, it appears in the terminal. Press `Ctrl+C` to stop the processes
 started by the script.
@@ -81,19 +128,19 @@ a separate terminal:
 
 ```bash
 mvn compile
-mvn exec:java -Dexec.mainClass="DroneSwarmSim.scheduler.SchedulerMain"
-mvn exec:java -Dexec.mainClass="DroneSwarmSim.drone.DroneMain"
-mvn exec:java -Dexec.mainClass="DroneSwarmSim.fire.FireIncidentMain" -Dexec.args="src/Final_event_file_w26.csv"
+mvn exec:java -Dexec.mainClass="droneswarmsim.scheduler.SchedulerMain"
+mvn exec:java -Dexec.mainClass="droneswarmsim.drone.DroneMain"
+mvn exec:java -Dexec.mainClass="droneswarmsim.fire.FireIncidentMain" -Dexec.args="scenarios/Final_event_file_w26.csv"
 ```
 
-For a shorter run, use `-Dexec.args="src/Sample_event_file.csv"` with
+For a shorter run, use `-Dexec.args="scenarios/Sample_event_file.csv"` with
 `FireIncidentMain`. That file has five incidents, all sent in under a second
 on the compressed clock. Missions and fault countdowns continue afterward.
 
 Passing an ID to `DroneMain` starts one drone instead of the configured fleet:
 
 ```bash
-mvn exec:java -Dexec.mainClass="DroneSwarmSim.drone.DroneMain" -Dexec.args="3"
+mvn exec:java -Dexec.mainClass="droneswarmsim.drone.DroneMain" -Dexec.args="3"
 ```
 
 ## Dashboard
@@ -135,7 +182,7 @@ UDP sockets in one JVM. Their scope is component integration; the full
 three-process launcher needs a separate run. The GUI tests check the dashboard's
 state handling. I check the rendered dashboard in a desktop session.
 
-GitHub Actions runs all 104 tests headless on every push and pull request.
+GitHub Actions runs all 120 tests headless on every push and pull request.
 `mvn verify` also writes a JaCoCo coverage report to `target/site/jacoco/`.
 Line coverage is 84% outside the Swing UI package: 87% for the scheduler and
 97% for the UDP and messaging code.
