@@ -36,8 +36,8 @@ class SimulationMetricsTest {
     @DisplayName("UT-METRICS-DEDUP-01: duplicate incident reports do not over-count")
     void duplicateFireDetectedDoesNotOverCount() {
         SimulationMetrics metrics = new SimulationMetrics();
-        IncidentReport report = report("14:00:00", 1);
 
+        IncidentReport report = report("14:00:00", 1);
         metrics.recordIncidentReported(report);
         metrics.recordIncidentReported(report);
         metrics.recordIncidentReported(report);
@@ -55,8 +55,8 @@ class SimulationMetricsTest {
     @DisplayName("UT-METRICS-DEDUP-02: duplicate recordFireExtinguished does not over-count")
     void duplicateFireExtinguishedDoesNotOverCount() {
         SimulationMetrics metrics = new SimulationMetrics();
-        IncidentReport report = report("14:05:00", 5);
 
+        IncidentReport report = report("14:05:00", 5);
         metrics.recordFireExtinguished(report);
         metrics.recordFireExtinguished(report);
         metrics.recordFireExtinguished(report);

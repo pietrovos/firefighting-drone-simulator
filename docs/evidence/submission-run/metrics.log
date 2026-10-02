@@ -1,0 +1,1911 @@
+[20:44:00.196] === Simulation session started ===
+[20:44:00.527] === Simulation session started ===
+[20:45:50.087] === Simulation session started ===
+[20:45:50.408] === Simulation session started ===
+[20:46:37.551] === FINAL METRICS SUMMARY ===
+
+============================================================
+              SIMULATION METRICS SUMMARY
+============================================================
+
+--- Simulation Overview ---
+Total duration:          42.45 seconds
+Fires reported:          5
+Fires extinguished:      5
+Total drone trips:       7
+Total faults:            5
+
+--- Response & Completion Times (Required Metrics) ---
+1. Avg Event Response Time:     14.71 seconds
+2. Max Event Response Time:     21.13 seconds
+3. Avg Event Completion Time:   25.62 seconds
+4. Max Event Completion Time:   40.45 seconds
+
+5. Drone Utilization (Required Metric) ---
+   Drone 0: 29.5% utilization (flight=13.1s, idle=31.3s, total=44.4s)
+   Drone 1: 33.4% utilization (flight=14.8s, idle=29.6s, total=44.4s)
+   Drone 2: 34.7% utilization (flight=15.4s, idle=29.0s, total=44.4s)
+   Drone 3: 9.0% utilization (flight=4.0s, idle=40.4s, total=44.4s)
+   Drone 4: 85.4% utilization (flight=38.0s, idle=6.5s, total=44.4s)
+   Drone 5: 9.0% utilization (flight=4.0s, idle=40.4s, total=44.4s)
+   Drone 6: 80.9% utilization (flight=36.0s, idle=8.5s, total=44.4s)
+   Drone 7: 77.5% utilization (flight=34.5s, idle=10.0s, total=44.4s)
+   Drone 8: 76.4% utilization (flight=33.9s, idle=10.5s, total=44.4s)
+   Drone 9: 34.7% utilization (flight=15.4s, idle=29.0s, total=44.4s)
+   Drone 10: 60.1% utilization (flight=26.7s, idle=17.7s, total=44.4s)
+   Drone 11: 33.3% utilization (flight=14.8s, idle=29.6s, total=44.4s)
+   Drone 12: 0.0% utilization (flight=0.0s, idle=44.4s, total=44.4s)
+   Drone 13: 0.0% utilization (flight=0.0s, idle=44.4s, total=44.4s)
+   Drone 14: 0.0% utilization (flight=0.0s, idle=44.4s, total=44.4s)
+   Drone 15: 0.0% utilization (flight=0.0s, idle=44.4s, total=44.4s)
+   Drone 16: 0.0% utilization (flight=0.0s, idle=44.4s, total=44.4s)
+   Drone 17: 0.0% utilization (flight=0.0s, idle=44.4s, total=44.4s)
+   Drone 18: 0.0% utilization (flight=0.0s, idle=44.4s, total=44.4s)
+   Drone 19: 0.0% utilization (flight=0.0s, idle=44.4s, total=44.4s)
+
+--- Queue Depth (Optional Metrics) ---
+6. Avg Queue Length:            0.50 events
+7. Max Queue Length:            1 events
+
+--- Per-Fire Breakdown ---
+  Zone 1: dispatch=0.00s, arrival=8.04s, extinguish=20.95s
+  Zone 2: dispatch=0.00s, arrival=10.82s, extinguish=40.45s
+  Zone 3: dispatch=0.00s, arrival=17.23s, extinguish=21.23s
+  Zone 4: dispatch=0.00s, arrival=16.33s, extinguish=20.33s
+  Zone 5: dispatch=0.00s, arrival=21.13s, extinguish=25.14s
+
+--- Drone Statistics ---
+Avg flight time:         12.53 seconds
+Avg idle time:           31.91 seconds
+Total fleet distance:    23309.9 units
+
+============================================================
+
+[20:46:37.551] === END SUMMARY ===
+[20:49:56.755] === Simulation session started ===
+[20:49:57.064] === Simulation session started ===
+[20:50:46.479] === Simulation session started ===
+[20:50:46.774] === Simulation session started ===
+[20:52:20.110] === Simulation session started ===
+[20:52:20.438] === Simulation session started ===
+[20:54:29.397] === Simulation session started ===
+[20:54:29.694] === Simulation session started ===
+[20:56:02.110] === Simulation session started ===
+[20:56:02.401] === Simulation session started ===
+[20:57:06.176] === Simulation session started ===
+[20:57:06.486] === Simulation session started ===
+[20:59:29.373] === Simulation session started ===
+[20:59:29.585] === Simulation session started ===
+[20:59:30.296] === Simulation session started ===
+[20:59:31.005] === Simulation session started ===
+[20:59:36.013] === Simulation session started ===
+[20:59:36.515] === FINAL METRICS SUMMARY ===
+
+============================================================
+              SIMULATION METRICS SUMMARY
+============================================================
+
+--- Simulation Overview ---
+Total duration:          0.30 seconds
+Fires reported:          1
+Fires extinguished:      1
+Total drone trips:       2
+Total faults:            0
+
+--- Response & Completion Times (Required Metrics) ---
+1. Avg Event Response Time:     0.30 seconds
+2. Max Event Response Time:     0.30 seconds
+3. Avg Event Completion Time:   0.30 seconds
+4. Max Event Completion Time:   0.30 seconds
+
+5. Drone Utilization (Required Metric) ---
+   Drone 1: 75.0% utilization (flight=0.3s, idle=0.1s, total=0.4s)
+   Drone 2: 0.0% utilization (flight=0.0s, idle=0.4s, total=0.4s)
+
+--- Queue Depth (Optional Metrics) ---
+6. Avg Queue Length:            0.50 events
+7. Max Queue Length:            1 events
+
+--- Per-Fire Breakdown ---
+  Zone 1: dispatch=0.00s, arrival=0.30s, extinguish=0.30s
+
+--- Drone Statistics ---
+Avg flight time:         0.15 seconds
+Avg idle time:           0.25 seconds
+Total fleet distance:    0.0 units
+
+============================================================
+
+[20:59:36.515] === END SUMMARY ===
+[20:59:36.720] === Simulation session started ===
+[20:59:38.727] === Simulation session started ===
+[20:59:38.980] === Simulation session started ===
+[20:59:39.233] === Simulation session started ===
+[20:59:39.990] === Simulation session started ===
+[20:59:39.993] === FINAL METRICS SUMMARY ===
+
+============================================================
+              SIMULATION METRICS SUMMARY
+============================================================
+
+--- Simulation Overview ---
+Total duration:          0.00 seconds
+Fires reported:          1
+Fires extinguished:      1
+Total drone trips:       2
+Total faults:            0
+
+--- Response & Completion Times (Required Metrics) ---
+1. Avg Event Response Time:     0.00 seconds
+2. Max Event Response Time:     0.00 seconds
+3. Avg Event Completion Time:   0.00 seconds
+4. Max Event Completion Time:   0.00 seconds
+
+5. Drone Utilization (Required Metric) ---
+   Drone 1: 0.0% utilization (flight=0.0s, idle=0.0s, total=0.0s)
+   Drone 2: 0.0% utilization (flight=0.0s, idle=0.0s, total=0.0s)
+
+--- Queue Depth (Optional Metrics) ---
+6. Avg Queue Length:            0.50 events
+7. Max Queue Length:            1 events
+
+--- Per-Fire Breakdown ---
+  Zone 1: dispatch=0.00s, arrival=0.00s, extinguish=0.00s
+
+--- Drone Statistics ---
+Avg flight time:         0.00 seconds
+Avg idle time:           0.00 seconds
+Total fleet distance:    1685.8 units
+
+============================================================
+
+[20:59:39.993] === END SUMMARY ===
+[20:59:40.497] === Simulation session started ===
+[20:59:40.498] === Simulation session started ===
+[20:59:40.499] === Simulation session started ===
+[20:59:40.499] === Simulation session started ===
+[20:59:40.504] === Simulation session started ===
+[20:59:40.505] === Simulation session started ===
+[20:59:40.506] === Simulation session started ===
+[20:59:40.507] === Simulation session started ===
+[20:59:42.162] === Simulation session started ===
+[20:59:42.163] === Simulation session started ===
+[20:59:42.164] === Simulation session started ===
+[20:59:42.919] === Simulation session started ===
+[20:59:42.920] === Simulation session started ===
+[20:59:42.921] === Simulation session started ===
+[20:59:43.695] === Simulation session started ===
+[20:59:46.603] === Simulation session started ===
+[20:59:49.511] === Simulation session started ===
+[20:59:49.764] === Simulation session started ===
+[20:59:55.571] === FINAL METRICS SUMMARY ===
+
+============================================================
+              SIMULATION METRICS SUMMARY
+============================================================
+
+--- Simulation Overview ---
+Total duration:          5.51 seconds
+Fires reported:          1
+Fires extinguished:      1
+Total drone trips:       0
+Total faults:            0
+
+--- Response & Completion Times (Required Metrics) ---
+1. Avg Event Response Time:     1.50 seconds
+2. Max Event Response Time:     1.50 seconds
+3. Avg Event Completion Time:   5.51 seconds
+4. Max Event Completion Time:   5.51 seconds
+
+5. Drone Utilization (Required Metric) ---
+   Drone 1: 94.8% utilization (flight=5.5s, idle=0.3s, total=5.8s)
+   Drone 2: 0.0% utilization (flight=0.0s, idle=5.8s, total=5.8s)
+
+--- Queue Depth (Optional Metrics) ---
+6. Avg Queue Length:            0.50 events
+7. Max Queue Length:            1 events
+
+--- Per-Fire Breakdown ---
+  Zone 1: dispatch=0.00s, arrival=1.50s, extinguish=5.51s
+
+--- Drone Statistics ---
+Avg flight time:         2.75 seconds
+Avg idle time:           3.05 seconds
+Total fleet distance:    70.7 units
+
+============================================================
+
+[20:59:55.571] === END SUMMARY ===
+[21:06:39.355] === Simulation session started ===
+[21:06:39.570] === Simulation session started ===
+[21:06:40.286] === Simulation session started ===
+[21:06:40.996] === Simulation session started ===
+[21:06:46.004] === Simulation session started ===
+[21:06:46.507] === FINAL METRICS SUMMARY ===
+
+============================================================
+              SIMULATION METRICS SUMMARY
+============================================================
+
+--- Simulation Overview ---
+Total duration:          0.30 seconds
+Fires reported:          1
+Fires extinguished:      1
+Total drone trips:       2
+Total faults:            0
+
+--- Response & Completion Times (Required Metrics) ---
+1. Avg Event Response Time:     0.30 seconds
+2. Max Event Response Time:     0.30 seconds
+3. Avg Event Completion Time:   0.30 seconds
+4. Max Event Completion Time:   0.30 seconds
+
+5. Drone Utilization (Required Metric) ---
+   Drone 1: 74.8% utilization (flight=0.3s, idle=0.1s, total=0.4s)
+   Drone 2: 0.0% utilization (flight=0.0s, idle=0.4s, total=0.4s)
+
+--- Queue Depth (Optional Metrics) ---
+6. Avg Queue Length:            0.50 events
+7. Max Queue Length:            1 events
+
+--- Per-Fire Breakdown ---
+  Zone 1: dispatch=0.00s, arrival=0.30s, extinguish=0.30s
+
+--- Drone Statistics ---
+Avg flight time:         0.15 seconds
+Avg idle time:           0.25 seconds
+Total fleet distance:    0.0 units
+
+============================================================
+
+[21:06:46.507] === END SUMMARY ===
+[21:06:46.713] === Simulation session started ===
+[21:06:48.720] === Simulation session started ===
+[21:06:48.973] === Simulation session started ===
+[21:06:49.226] === Simulation session started ===
+[21:06:49.983] === Simulation session started ===
+[21:06:49.987] === FINAL METRICS SUMMARY ===
+
+============================================================
+              SIMULATION METRICS SUMMARY
+============================================================
+
+--- Simulation Overview ---
+Total duration:          0.00 seconds
+Fires reported:          1
+Fires extinguished:      1
+Total drone trips:       2
+Total faults:            0
+
+--- Response & Completion Times (Required Metrics) ---
+1. Avg Event Response Time:     0.00 seconds
+2. Max Event Response Time:     0.00 seconds
+3. Avg Event Completion Time:   0.00 seconds
+4. Max Event Completion Time:   0.00 seconds
+
+5. Drone Utilization (Required Metric) ---
+   Drone 1: 0.0% utilization (flight=0.0s, idle=0.0s, total=0.0s)
+   Drone 2: 0.0% utilization (flight=0.0s, idle=0.0s, total=0.0s)
+
+--- Queue Depth (Optional Metrics) ---
+6. Avg Queue Length:            0.50 events
+7. Max Queue Length:            1 events
+
+--- Per-Fire Breakdown ---
+  Zone 1: dispatch=0.00s, arrival=0.00s, extinguish=0.00s
+
+--- Drone Statistics ---
+Avg flight time:         0.00 seconds
+Avg idle time:           0.00 seconds
+Total fleet distance:    1685.8 units
+
+============================================================
+
+[21:06:49.987] === END SUMMARY ===
+[21:06:50.491] === Simulation session started ===
+[21:06:50.493] === Simulation session started ===
+[21:06:50.494] === Simulation session started ===
+[21:06:50.495] === Simulation session started ===
+[21:06:50.500] === Simulation session started ===
+[21:06:50.502] === Simulation session started ===
+[21:06:50.503] === Simulation session started ===
+[21:06:50.505] === Simulation session started ===
+[21:06:52.160] === Simulation session started ===
+[21:06:52.161] === Simulation session started ===
+[21:06:52.163] === Simulation session started ===
+[21:06:52.917] === Simulation session started ===
+[21:06:52.918] === Simulation session started ===
+[21:06:52.919] === Simulation session started ===
+[21:06:53.697] === Simulation session started ===
+[21:06:56.604] === Simulation session started ===
+[21:06:59.514] === Simulation session started ===
+[21:06:59.767] === Simulation session started ===
+[21:07:05.573] === FINAL METRICS SUMMARY ===
+
+============================================================
+              SIMULATION METRICS SUMMARY
+============================================================
+
+--- Simulation Overview ---
+Total duration:          5.50 seconds
+Fires reported:          1
+Fires extinguished:      1
+Total drone trips:       0
+Total faults:            0
+
+--- Response & Completion Times (Required Metrics) ---
+1. Avg Event Response Time:     1.50 seconds
+2. Max Event Response Time:     1.50 seconds
+3. Avg Event Completion Time:   5.50 seconds
+4. Max Event Completion Time:   5.50 seconds
+
+5. Drone Utilization (Required Metric) ---
+   Drone 1: 94.8% utilization (flight=5.5s, idle=0.3s, total=5.8s)
+   Drone 2: 0.0% utilization (flight=0.0s, idle=5.8s, total=5.8s)
+
+--- Queue Depth (Optional Metrics) ---
+6. Avg Queue Length:            0.50 events
+7. Max Queue Length:            1 events
+
+--- Per-Fire Breakdown ---
+  Zone 1: dispatch=0.00s, arrival=1.50s, extinguish=5.50s
+
+--- Drone Statistics ---
+Avg flight time:         2.75 seconds
+Avg idle time:           3.05 seconds
+Total fleet distance:    70.7 units
+
+============================================================
+
+[21:07:05.573] === END SUMMARY ===
+[21:07:43.782] === Simulation session started ===
+[21:07:44.094] === Simulation session started ===
+[21:08:31.227] === FINAL METRICS SUMMARY ===
+
+============================================================
+              SIMULATION METRICS SUMMARY
+============================================================
+
+--- Simulation Overview ---
+Total duration:          42.46 seconds
+Fires reported:          5
+Fires extinguished:      5
+Total drone trips:       7
+Total faults:            5
+
+--- Response & Completion Times (Required Metrics) ---
+1. Avg Event Response Time:     14.71 seconds
+2. Max Event Response Time:     21.14 seconds
+3. Avg Event Completion Time:   25.62 seconds
+4. Max Event Completion Time:   40.46 seconds
+
+5. Drone Utilization (Required Metric) ---
+   Drone 0: 29.5% utilization (flight=13.1s, idle=31.3s, total=44.4s)
+   Drone 1: 33.4% utilization (flight=14.8s, idle=29.6s, total=44.4s)
+   Drone 2: 34.7% utilization (flight=15.4s, idle=29.0s, total=44.4s)
+   Drone 3: 9.0% utilization (flight=4.0s, idle=40.4s, total=44.4s)
+   Drone 4: 85.4% utilization (flight=38.0s, idle=6.5s, total=44.4s)
+   Drone 5: 9.0% utilization (flight=4.0s, idle=40.4s, total=44.4s)
+   Drone 6: 80.9% utilization (flight=36.0s, idle=8.5s, total=44.4s)
+   Drone 7: 77.6% utilization (flight=34.5s, idle=10.0s, total=44.4s)
+   Drone 8: 76.4% utilization (flight=34.0s, idle=10.5s, total=44.4s)
+   Drone 9: 34.7% utilization (flight=15.4s, idle=29.0s, total=44.4s)
+   Drone 10: 60.2% utilization (flight=26.7s, idle=17.7s, total=44.4s)
+   Drone 11: 33.4% utilization (flight=14.8s, idle=29.6s, total=44.4s)
+   Drone 12: 0.0% utilization (flight=0.0s, idle=44.4s, total=44.4s)
+   Drone 13: 0.0% utilization (flight=0.0s, idle=44.4s, total=44.4s)
+   Drone 14: 0.0% utilization (flight=0.0s, idle=44.4s, total=44.4s)
+   Drone 15: 0.0% utilization (flight=0.0s, idle=44.4s, total=44.4s)
+   Drone 16: 0.0% utilization (flight=0.0s, idle=44.4s, total=44.4s)
+   Drone 17: 0.0% utilization (flight=0.0s, idle=44.4s, total=44.4s)
+   Drone 18: 0.0% utilization (flight=0.0s, idle=44.4s, total=44.4s)
+   Drone 19: 0.0% utilization (flight=0.0s, idle=44.4s, total=44.4s)
+
+--- Queue Depth (Optional Metrics) ---
+6. Avg Queue Length:            0.50 events
+7. Max Queue Length:            1 events
+
+--- Per-Fire Breakdown ---
+  Zone 1: dispatch=0.00s, arrival=8.04s, extinguish=20.95s
+  Zone 2: dispatch=0.00s, arrival=10.82s, extinguish=40.46s
+  Zone 3: dispatch=0.00s, arrival=17.23s, extinguish=21.24s
+  Zone 4: dispatch=0.00s, arrival=16.33s, extinguish=20.33s
+  Zone 5: dispatch=0.00s, arrival=21.14s, extinguish=25.14s
+
+--- Drone Statistics ---
+Avg flight time:         12.53 seconds
+Avg idle time:           31.89 seconds
+Total fleet distance:    23324.9 units
+
+============================================================
+
+[21:08:31.227] === END SUMMARY ===
+[21:09:37.146] === Simulation session started ===
+[21:09:37.437] === Simulation session started ===
+[21:10:57.868] === Simulation session started ===
+[21:10:58.165] === Simulation session started ===
+[21:11:44.894] === Simulation session started ===
+[21:11:45.194] === Simulation session started ===
+[21:25:10.807] === Simulation session started ===
+[21:25:11.109] === Simulation session started ===
+[21:31:12.510] === Simulation session started ===
+[21:31:12.805] === Simulation session started ===
+[21:31:59.997] === FINAL METRICS SUMMARY ===
+
+============================================================
+              SIMULATION METRICS SUMMARY
+============================================================
+
+--- Simulation Overview ---
+Total duration:          42.47 seconds
+Fires reported:          5
+Fires extinguished:      5
+Total drone trips:       7
+Total faults:            5
+
+--- Response & Completion Times (Required Metrics) ---
+1. Avg Event Response Time:     14.71 seconds
+2. Max Event Response Time:     21.14 seconds
+3. Avg Event Completion Time:   25.62 seconds
+4. Max Event Completion Time:   40.47 seconds
+
+5. Drone Utilization (Required Metric) ---
+   Drone 0: 29.5% utilization (flight=13.1s, idle=31.3s, total=44.5s)
+   Drone 1: 33.3% utilization (flight=14.8s, idle=29.6s, total=44.5s)
+   Drone 2: 34.7% utilization (flight=15.4s, idle=29.0s, total=44.5s)
+   Drone 3: 9.0% utilization (flight=4.0s, idle=40.5s, total=44.5s)
+   Drone 4: 85.4% utilization (flight=38.0s, idle=6.5s, total=44.5s)
+   Drone 5: 9.0% utilization (flight=4.0s, idle=40.5s, total=44.5s)
+   Drone 6: 80.9% utilization (flight=36.0s, idle=8.5s, total=44.5s)
+   Drone 7: 77.5% utilization (flight=34.5s, idle=10.0s, total=44.5s)
+   Drone 8: 76.4% utilization (flight=34.0s, idle=10.5s, total=44.5s)
+   Drone 9: 34.7% utilization (flight=15.4s, idle=29.0s, total=44.5s)
+   Drone 10: 60.1% utilization (flight=26.7s, idle=17.7s, total=44.5s)
+   Drone 11: 33.3% utilization (flight=14.8s, idle=29.6s, total=44.5s)
+   Drone 12: 0.0% utilization (flight=0.0s, idle=44.5s, total=44.5s)
+   Drone 13: 0.0% utilization (flight=0.0s, idle=44.5s, total=44.5s)
+   Drone 14: 0.0% utilization (flight=0.0s, idle=44.5s, total=44.5s)
+   Drone 15: 0.0% utilization (flight=0.0s, idle=44.5s, total=44.5s)
+   Drone 16: 0.0% utilization (flight=0.0s, idle=44.5s, total=44.5s)
+   Drone 17: 0.0% utilization (flight=0.0s, idle=44.5s, total=44.5s)
+   Drone 18: 0.0% utilization (flight=0.0s, idle=44.5s, total=44.5s)
+   Drone 19: 0.0% utilization (flight=0.0s, idle=44.5s, total=44.5s)
+
+--- Queue Depth (Optional Metrics) ---
+6. Avg Queue Length:            0.50 events
+7. Max Queue Length:            1 events
+
+--- Per-Fire Breakdown ---
+  Zone 1: dispatch=0.01s, arrival=8.04s, extinguish=20.95s
+  Zone 2: dispatch=0.00s, arrival=10.82s, extinguish=40.47s
+  Zone 3: dispatch=0.00s, arrival=17.23s, extinguish=21.23s
+  Zone 4: dispatch=0.00s, arrival=16.33s, extinguish=20.33s
+  Zone 5: dispatch=0.00s, arrival=21.14s, extinguish=25.14s
+
+--- Drone Statistics ---
+Avg flight time:         12.53 seconds
+Avg idle time:           31.93 seconds
+Total fleet distance:    23324.9 units
+
+============================================================
+
+[21:31:59.997] === END SUMMARY ===
+[11:37:18.806] === Simulation session started ===
+[11:37:19.593] === Simulation session started ===
+[11:41:38.604] === Simulation session started ===
+[11:41:40.848] === Simulation session started ===
+[11:41:41.352] === FINAL METRICS SUMMARY ===
+
+============================================================
+              SIMULATION METRICS SUMMARY
+============================================================
+
+--- Simulation Overview ---
+Total duration:          0.30 seconds
+Fires reported:          1
+Fires extinguished:      1
+Total drone trips:       2
+Total faults:            0
+
+--- Response & Completion Times (Required Metrics) ---
+1. Avg Event Response Time:     0.30 seconds
+2. Max Event Response Time:     0.30 seconds
+3. Avg Event Completion Time:   0.30 seconds
+4. Max Event Completion Time:   0.30 seconds
+
+5. Drone Utilization (Required Metric) ---
+   Drone 1: 75.0% utilization (flight=0.3s, idle=0.1s, total=0.4s)
+   Drone 2: 0.0% utilization (flight=0.0s, idle=0.4s, total=0.4s)
+
+--- Queue Depth (Optional Metrics) ---
+6. Avg Queue Length:            0.50 events
+7. Max Queue Length:            1 events
+
+--- Per-Fire Breakdown ---
+  Zone 1: dispatch=0.00s, arrival=0.30s, extinguish=0.30s
+
+--- Drone Statistics ---
+Avg flight time:         0.15 seconds
+Avg idle time:           0.25 seconds
+Total fleet distance:    0.0 units
+
+============================================================
+
+[11:41:41.352] === END SUMMARY ===
+[11:41:41.561] === Simulation session started ===
+[11:43:07.960] === Simulation session started ===
+[11:43:08.255] === Simulation session started ===
+[11:44:15.298] === Simulation session started ===
+[11:44:15.590] === Simulation session started ===
+[11:47:14.446] === Simulation session started ===
+[11:47:14.753] === Simulation session started ===
+[11:49:09.791] === Simulation session started ===
+[11:49:10.075] === Simulation session started ===
+[11:51:29.188] === Simulation session started ===
+[11:51:29.498] === Simulation session started ===
+[11:56:25.743] === Simulation session started ===
+[11:56:26.078] === Simulation session started ===
+[11:57:39.047] === Simulation session started ===
+[11:57:39.266] === Simulation session started ===
+[11:57:39.977] === Simulation session started ===
+[11:57:40.686] === Simulation session started ===
+[11:57:45.692] === Simulation session started ===
+[11:57:52.197] === Simulation session started ===
+[11:57:52.198] === Simulation session started ===
+[11:57:52.199] === Simulation session started ===
+[11:57:52.953] === Simulation session started ===
+[11:57:52.954] === Simulation session started ===
+[11:57:52.955] === Simulation session started ===
+[11:57:53.713] === Simulation session started ===
+[11:57:55.932] === Simulation session started ===
+[11:57:56.434] === FINAL METRICS SUMMARY ===
+
+============================================================
+              SIMULATION METRICS SUMMARY
+============================================================
+
+--- Simulation Overview ---
+Total duration:          0.30 seconds
+Fires reported:          1
+Fires extinguished:      1
+Total drone trips:       2
+Total faults:            0
+
+--- Response & Completion Times (Required Metrics) ---
+1. Avg Event Response Time:     0.30 seconds
+2. Max Event Response Time:     0.30 seconds
+3. Avg Event Completion Time:   0.30 seconds
+4. Max Event Completion Time:   0.30 seconds
+
+5. Drone Utilization (Required Metric) ---
+   Drone 1: 75.0% utilization (flight=0.3s, idle=0.1s, total=0.4s)
+   Drone 2: 0.0% utilization (flight=0.0s, idle=0.4s, total=0.4s)
+
+--- Queue Depth (Optional Metrics) ---
+6. Avg Queue Length:            0.50 events
+7. Max Queue Length:            1 events
+
+--- Per-Fire Breakdown ---
+  Zone 1: dispatch=0.00s, arrival=0.30s, extinguish=0.30s
+
+--- Drone Statistics ---
+Avg flight time:         0.15 seconds
+Avg idle time:           0.25 seconds
+Total fleet distance:    0.0 units
+
+============================================================
+
+[11:57:56.434] === END SUMMARY ===
+[11:57:56.642] === Simulation session started ===
+[11:57:58.649] === Simulation session started ===
+[11:57:58.902] === Simulation session started ===
+[11:57:59.156] === Simulation session started ===
+[11:57:59.914] === Simulation session started ===
+[11:57:59.916] === FINAL METRICS SUMMARY ===
+
+============================================================
+              SIMULATION METRICS SUMMARY
+============================================================
+
+--- Simulation Overview ---
+Total duration:          0.00 seconds
+Fires reported:          1
+Fires extinguished:      1
+Total drone trips:       2
+Total faults:            0
+
+--- Response & Completion Times (Required Metrics) ---
+1. Avg Event Response Time:     0.00 seconds
+2. Max Event Response Time:     0.00 seconds
+3. Avg Event Completion Time:   0.00 seconds
+4. Max Event Completion Time:   0.00 seconds
+
+5. Drone Utilization (Required Metric) ---
+   Drone 1: 0.0% utilization (flight=0.0s, idle=0.0s, total=0.0s)
+   Drone 2: 0.0% utilization (flight=0.0s, idle=0.0s, total=0.0s)
+
+--- Queue Depth (Optional Metrics) ---
+6. Avg Queue Length:            0.50 events
+7. Max Queue Length:            1 events
+
+--- Per-Fire Breakdown ---
+  Zone 1: dispatch=0.00s, arrival=0.00s, extinguish=0.00s
+
+--- Drone Statistics ---
+Avg flight time:         0.00 seconds
+Avg idle time:           0.00 seconds
+Total fleet distance:    1685.8 units
+
+============================================================
+
+[11:57:59.916] === END SUMMARY ===
+[11:58:00.420] === Simulation session started ===
+[11:58:00.421] === Simulation session started ===
+[11:58:00.421] === Simulation session started ===
+[11:58:00.422] === Simulation session started ===
+[11:58:00.423] === Simulation session started ===
+[11:58:00.427] === Simulation session started ===
+[11:58:00.428] === Simulation session started ===
+[11:58:00.429] === Simulation session started ===
+[11:58:00.447] === Simulation session started ===
+[11:58:03.355] === Simulation session started ===
+[11:58:06.262] === Simulation session started ===
+[11:58:06.515] === Simulation session started ===
+[11:58:12.321] === FINAL METRICS SUMMARY ===
+
+============================================================
+              SIMULATION METRICS SUMMARY
+============================================================
+
+--- Simulation Overview ---
+Total duration:          5.50 seconds
+Fires reported:          1
+Fires extinguished:      1
+Total drone trips:       0
+Total faults:            0
+
+--- Response & Completion Times (Required Metrics) ---
+1. Avg Event Response Time:     1.50 seconds
+2. Max Event Response Time:     1.50 seconds
+3. Avg Event Completion Time:   5.50 seconds
+4. Max Event Completion Time:   5.50 seconds
+
+5. Drone Utilization (Required Metric) ---
+   Drone 1: 94.8% utilization (flight=5.5s, idle=0.3s, total=5.8s)
+   Drone 2: 0.0% utilization (flight=0.0s, idle=5.8s, total=5.8s)
+
+--- Queue Depth (Optional Metrics) ---
+6. Avg Queue Length:            0.50 events
+7. Max Queue Length:            1 events
+
+--- Per-Fire Breakdown ---
+  Zone 1: dispatch=0.00s, arrival=1.50s, extinguish=5.50s
+
+--- Drone Statistics ---
+Avg flight time:         2.75 seconds
+Avg idle time:           3.05 seconds
+Total fleet distance:    70.7 units
+
+============================================================
+
+[11:58:12.321] === END SUMMARY ===
+[11:59:48.532] === Simulation session started ===
+[11:59:48.760] === Simulation session started ===
+[11:59:49.472] === Simulation session started ===
+[11:59:50.185] === Simulation session started ===
+[11:59:55.194] === Simulation session started ===
+[11:59:56.498] === FINAL METRICS SUMMARY ===
+
+============================================================
+              SIMULATION METRICS SUMMARY
+============================================================
+
+--- Simulation Overview ---
+Total duration:          1.15 seconds
+Fires reported:          1
+Fires extinguished:      1
+Total drone trips:       0
+Total faults:            0
+
+--- Response & Completion Times (Required Metrics) ---
+1. Avg Event Response Time:     0.00 seconds
+2. Max Event Response Time:     0.00 seconds
+3. Avg Event Completion Time:   1.15 seconds
+4. Max Event Completion Time:   1.15 seconds
+
+5. Drone Utilization (Required Metric) ---
+   Drone 1: 17.7% utilization (flight=0.2s, idle=0.7s, total=0.9s)
+
+--- Queue Depth (Optional Metrics) ---
+6. Avg Queue Length:            0.50 events
+7. Max Queue Length:            1 events
+
+--- Per-Fire Breakdown ---
+  Zone 1: dispatch=1.00s, arrival=0.00s, extinguish=1.15s
+
+--- Drone Statistics ---
+Avg flight time:         0.15 seconds
+Avg idle time:           0.70 seconds
+Total fleet distance:    28.3 units
+
+============================================================
+
+[11:59:56.498] === END SUMMARY ===
+[12:02:51.079] === Simulation session started ===
+[12:02:51.298] === Simulation session started ===
+[12:02:52.012] === Simulation session started ===
+[12:02:52.724] === Simulation session started ===
+[12:02:57.731] === Simulation session started ===
+[12:02:59.034] === FINAL METRICS SUMMARY ===
+
+============================================================
+              SIMULATION METRICS SUMMARY
+============================================================
+
+--- Simulation Overview ---
+Total duration:          1.15 seconds
+Fires reported:          1
+Fires extinguished:      1
+Total drone trips:       0
+Total faults:            0
+
+--- Response & Completion Times (Required Metrics) ---
+1. Avg Event Response Time:     0.00 seconds
+2. Max Event Response Time:     0.00 seconds
+3. Avg Event Completion Time:   1.15 seconds
+4. Max Event Completion Time:   1.15 seconds
+
+5. Drone Utilization (Required Metric) ---
+   Drone 1: 17.7% utilization (flight=0.2s, idle=0.7s, total=0.9s)
+
+--- Queue Depth (Optional Metrics) ---
+6. Avg Queue Length:            0.50 events
+7. Max Queue Length:            1 events
+
+--- Per-Fire Breakdown ---
+  Zone 1: dispatch=1.00s, arrival=0.00s, extinguish=1.15s
+
+--- Drone Statistics ---
+Avg flight time:         0.15 seconds
+Avg idle time:           0.70 seconds
+Total fleet distance:    28.3 units
+
+============================================================
+
+[12:02:59.034] === END SUMMARY ===
+[12:02:59.386] === Simulation session started ===
+[12:02:59.387] === Simulation session started ===
+[12:02:59.389] === Simulation session started ===
+[12:03:00.143] === Simulation session started ===
+[12:03:00.144] === Simulation session started ===
+[12:03:00.146] === Simulation session started ===
+[12:03:00.904] === Simulation session started ===
+[12:03:03.119] === Simulation session started ===
+[12:03:03.621] === FINAL METRICS SUMMARY ===
+
+============================================================
+              SIMULATION METRICS SUMMARY
+============================================================
+
+--- Simulation Overview ---
+Total duration:          0.30 seconds
+Fires reported:          1
+Fires extinguished:      1
+Total drone trips:       2
+Total faults:            0
+
+--- Response & Completion Times (Required Metrics) ---
+1. Avg Event Response Time:     0.30 seconds
+2. Max Event Response Time:     0.30 seconds
+3. Avg Event Completion Time:   0.30 seconds
+4. Max Event Completion Time:   0.30 seconds
+
+5. Drone Utilization (Required Metric) ---
+   Drone 1: 75.0% utilization (flight=0.3s, idle=0.1s, total=0.4s)
+   Drone 2: 0.0% utilization (flight=0.0s, idle=0.4s, total=0.4s)
+
+--- Queue Depth (Optional Metrics) ---
+6. Avg Queue Length:            0.50 events
+7. Max Queue Length:            1 events
+
+--- Per-Fire Breakdown ---
+  Zone 1: dispatch=0.00s, arrival=0.30s, extinguish=0.30s
+
+--- Drone Statistics ---
+Avg flight time:         0.15 seconds
+Avg idle time:           0.25 seconds
+Total fleet distance:    0.0 units
+
+============================================================
+
+[12:03:03.621] === END SUMMARY ===
+[12:03:03.828] === Simulation session started ===
+[12:03:05.834] === Simulation session started ===
+[12:03:06.088] === Simulation session started ===
+[12:03:06.341] === Simulation session started ===
+[12:03:07.098] === Simulation session started ===
+[12:03:07.100] === FINAL METRICS SUMMARY ===
+
+============================================================
+              SIMULATION METRICS SUMMARY
+============================================================
+
+--- Simulation Overview ---
+Total duration:          0.00 seconds
+Fires reported:          1
+Fires extinguished:      1
+Total drone trips:       2
+Total faults:            0
+
+--- Response & Completion Times (Required Metrics) ---
+1. Avg Event Response Time:     0.00 seconds
+2. Max Event Response Time:     0.00 seconds
+3. Avg Event Completion Time:   0.00 seconds
+4. Max Event Completion Time:   0.00 seconds
+
+5. Drone Utilization (Required Metric) ---
+   Drone 1: 0.0% utilization (flight=0.0s, idle=0.0s, total=0.0s)
+   Drone 2: 0.0% utilization (flight=0.0s, idle=0.0s, total=0.0s)
+
+--- Queue Depth (Optional Metrics) ---
+6. Avg Queue Length:            0.50 events
+7. Max Queue Length:            1 events
+
+--- Per-Fire Breakdown ---
+  Zone 1: dispatch=0.00s, arrival=0.00s, extinguish=0.00s
+
+--- Drone Statistics ---
+Avg flight time:         0.00 seconds
+Avg idle time:           0.00 seconds
+Total fleet distance:    1685.8 units
+
+============================================================
+
+[12:03:07.100] === END SUMMARY ===
+[12:03:07.605] === Simulation session started ===
+[12:03:07.605] === Simulation session started ===
+[12:03:07.606] === Simulation session started ===
+[12:03:07.607] === Simulation session started ===
+[12:03:07.607] === Simulation session started ===
+[12:03:07.612] === Simulation session started ===
+[12:03:07.613] === Simulation session started ===
+[12:03:07.614] === Simulation session started ===
+[12:03:07.631] === Simulation session started ===
+[12:03:08.083] === FINAL METRICS SUMMARY ===
+
+============================================================
+              SIMULATION METRICS SUMMARY
+============================================================
+
+--- Simulation Overview ---
+Total duration:          0.05 seconds
+Fires reported:          1
+Fires extinguished:      1
+Total drone trips:       0
+Total faults:            0
+
+--- Response & Completion Times (Required Metrics) ---
+1. Avg Event Response Time:     0.00 seconds
+2. Max Event Response Time:     0.00 seconds
+3. Avg Event Completion Time:   0.05 seconds
+4. Max Event Completion Time:   0.05 seconds
+
+5. Drone Utilization (Required Metric) ---
+   Drone 1: 20.0% utilization (flight=0.1s, idle=0.2s, total=0.3s)
+   Drone 2: 0.0% utilization (flight=0.0s, idle=0.3s, total=0.3s)
+   Drone 3: 0.0% utilization (flight=0.0s, idle=0.3s, total=0.3s)
+
+--- Queue Depth (Optional Metrics) ---
+6. Avg Queue Length:            0.50 events
+7. Max Queue Length:            1 events
+
+--- Per-Fire Breakdown ---
+  Zone 1: dispatch=0.00s, arrival=0.00s, extinguish=0.05s
+
+--- Drone Statistics ---
+Avg flight time:         0.02 seconds
+Avg idle time:           0.23 seconds
+Total fleet distance:    0.0 units
+
+============================================================
+
+[12:03:08.083] === END SUMMARY ===
+[12:03:10.538] === Simulation session started ===
+[12:03:10.990] === FINAL METRICS SUMMARY ===
+
+============================================================
+              SIMULATION METRICS SUMMARY
+============================================================
+
+--- Simulation Overview ---
+Total duration:          0.05 seconds
+Fires reported:          1
+Fires extinguished:      1
+Total drone trips:       0
+Total faults:            0
+
+--- Response & Completion Times (Required Metrics) ---
+1. Avg Event Response Time:     0.00 seconds
+2. Max Event Response Time:     0.00 seconds
+3. Avg Event Completion Time:   0.05 seconds
+4. Max Event Completion Time:   0.05 seconds
+
+5. Drone Utilization (Required Metric) ---
+   Drone 1: 20.0% utilization (flight=0.1s, idle=0.2s, total=0.3s)
+   Drone 2: 0.0% utilization (flight=0.0s, idle=0.3s, total=0.3s)
+   Drone 3: 0.0% utilization (flight=0.0s, idle=0.3s, total=0.3s)
+
+--- Queue Depth (Optional Metrics) ---
+6. Avg Queue Length:            0.50 events
+7. Max Queue Length:            1 events
+
+--- Per-Fire Breakdown ---
+  Zone 1: dispatch=0.00s, arrival=0.00s, extinguish=0.05s
+
+--- Drone Statistics ---
+Avg flight time:         0.02 seconds
+Avg idle time:           0.23 seconds
+Total fleet distance:    0.0 units
+
+============================================================
+
+[12:03:10.990] === END SUMMARY ===
+[12:03:13.446] === Simulation session started ===
+[12:03:13.699] === Simulation session started ===
+[12:03:19.504] === FINAL METRICS SUMMARY ===
+
+============================================================
+              SIMULATION METRICS SUMMARY
+============================================================
+
+--- Simulation Overview ---
+Total duration:          5.50 seconds
+Fires reported:          1
+Fires extinguished:      1
+Total drone trips:       0
+Total faults:            0
+
+--- Response & Completion Times (Required Metrics) ---
+1. Avg Event Response Time:     1.50 seconds
+2. Max Event Response Time:     1.50 seconds
+3. Avg Event Completion Time:   5.50 seconds
+4. Max Event Completion Time:   5.50 seconds
+
+5. Drone Utilization (Required Metric) ---
+   Drone 1: 94.8% utilization (flight=5.5s, idle=0.3s, total=5.8s)
+   Drone 2: 0.0% utilization (flight=0.0s, idle=5.8s, total=5.8s)
+
+--- Queue Depth (Optional Metrics) ---
+6. Avg Queue Length:            0.50 events
+7. Max Queue Length:            1 events
+
+--- Per-Fire Breakdown ---
+  Zone 1: dispatch=0.00s, arrival=1.50s, extinguish=5.50s
+
+--- Drone Statistics ---
+Avg flight time:         2.75 seconds
+Avg idle time:           3.05 seconds
+Total fleet distance:    70.7 units
+
+============================================================
+
+[12:03:19.504] === END SUMMARY ===
+[12:12:44.502] === Simulation session started ===
+[12:12:44.820] === Simulation session started ===
+[12:18:06.466] === Simulation session started ===
+[12:18:06.798] === Simulation session started ===
+[12:22:49.557] === Simulation session started ===
+[12:22:49.567] === Simulation session started ===
+[12:22:49.577] === Simulation session started ===
+[12:22:49.983] === Simulation session started ===
+[12:22:50.296] === Simulation session started ===
+[12:22:50.348] === Simulation session started ===
+[12:22:50.352] === Simulation session started ===
+[12:22:50.355] === Simulation session started ===
+[12:26:49.358] === Simulation session started ===
+[12:26:49.585] === Simulation session started ===
+[12:26:50.298] === Simulation session started ===
+[12:26:51.011] === Simulation session started ===
+[12:26:56.021] === Simulation session started ===
+[12:26:57.324] === FINAL METRICS SUMMARY ===
+
+============================================================
+              SIMULATION METRICS SUMMARY
+============================================================
+
+--- Simulation Overview ---
+Total duration:          1.15 seconds
+Fires reported:          1
+Fires extinguished:      1
+Total drone trips:       0
+Total faults:            0
+
+--- Response & Completion Times (Required Metrics) ---
+1. Avg Event Response Time:     0.00 seconds
+2. Max Event Response Time:     0.00 seconds
+3. Avg Event Completion Time:   1.15 seconds
+4. Max Event Completion Time:   1.15 seconds
+
+5. Drone Utilization (Required Metric) ---
+   Drone 1: 17.7% utilization (flight=0.2s, idle=0.7s, total=0.9s)
+
+--- Queue Depth (Optional Metrics) ---
+6. Avg Queue Length:            0.50 events
+7. Max Queue Length:            1 events
+
+--- Per-Fire Breakdown ---
+  Zone 1: dispatch=1.00s, arrival=0.00s, extinguish=1.15s
+
+--- Drone Statistics ---
+Avg flight time:         0.15 seconds
+Avg idle time:           0.70 seconds
+Total fleet distance:    28.3 units
+
+============================================================
+
+[12:26:57.324] === END SUMMARY ===
+[12:26:57.677] === Simulation session started ===
+[12:26:57.679] === Simulation session started ===
+[12:26:57.683] === Simulation session started ===
+[12:26:58.440] === Simulation session started ===
+[12:26:58.441] === Simulation session started ===
+[12:26:58.443] === Simulation session started ===
+[13:28:50.059] === Simulation session started ===
+[13:28:50.359] === Simulation session started ===
+[13:31:45.823] === Simulation session started ===
+[13:31:46.150] === Simulation session started ===
+[13:34:03.606] === Simulation session started ===
+[13:34:03.920] === Simulation session started ===
+[13:35:47.298] === Simulation session started ===
+[13:35:47.619] === Simulation session started ===
+[13:36:50.604] === Simulation session started ===
+[13:36:50.922] === Simulation session started ===
+[13:40:18.117] === Simulation session started ===
+[13:40:18.433] === Simulation session started ===
+[13:41:19.556] === Simulation session started ===
+[13:41:19.862] === Simulation session started ===
+[13:44:49.280] === Simulation session started ===
+[13:44:49.872] === Simulation session started ===
+[13:46:34.762] === Simulation session started ===
+[13:46:35.131] === Simulation session started ===
+[13:49:55.968] === Simulation session started ===
+[13:49:56.273] === Simulation session started ===
+[13:51:51.316] === Simulation session started ===
+[13:51:51.623] === Simulation session started ===
+[13:56:25.534] === Simulation session started ===
+[13:56:25.849] === Simulation session started ===
+[13:57:57.583] === Simulation session started ===
+[13:57:57.887] === Simulation session started ===
+[13:59:46.726] === Simulation session started ===
+[13:59:47.052] === Simulation session started ===
+[14:03:53.904] === Simulation session started ===
+[14:03:54.220] === Simulation session started ===
+[14:07:17.215] === Simulation session started ===
+[14:07:17.517] === Simulation session started ===
+[14:07:58.642] === Simulation session started ===
+[14:07:58.929] === Simulation session started ===
+[14:13:28.841] === FINAL METRICS SUMMARY ===
+
+============================================================
+              SIMULATION METRICS SUMMARY
+============================================================
+
+--- Simulation Overview ---
+Total duration:          325.20 seconds
+Fires reported:          5
+Fires extinguished:      5
+Total drone trips:       46
+Total faults:            0
+
+--- Response & Completion Times (Required Metrics) ---
+1. Avg Event Response Time:     13.62 seconds
+2. Max Event Response Time:     21.30 seconds
+3. Avg Event Completion Time:   25.92 seconds
+4. Max Event Completion Time:   45.63 seconds
+
+5. Drone Utilization (Required Metric) ---
+   Drone 0: 32.9% utilization (flight=107.8s, idle=219.4s, total=327.2s)
+   Drone 1: 24.2% utilization (flight=79.1s, idle=248.1s, total=327.2s)
+   Drone 2: 16.8% utilization (flight=54.8s, idle=270.6s, total=325.4s)
+   Drone 3: 28.8% utilization (flight=94.1s, idle=233.1s, total=327.2s)
+   Drone 4: 16.6% utilization (flight=53.7s, idle=269.0s, total=322.7s)
+   Drone 5: 35.6% utilization (flight=116.5s, idle=210.7s, total=327.2s)
+   Drone 6: 12.3% utilization (flight=39.9s, idle=284.0s, total=323.9s)
+   Drone 7: 31.4% utilization (flight=102.6s, idle=224.6s, total=327.2s)
+   Drone 8: 19.2% utilization (flight=62.7s, idle=264.5s, total=327.2s)
+   Drone 9: 26.1% utilization (flight=85.3s, idle=241.9s, total=327.2s)
+   Drone 10: 33.8% utilization (flight=110.4s, idle=216.8s, total=327.2s)
+   Drone 11: 17.6% utilization (flight=56.5s, idle=265.2s, total=321.7s)
+   Drone 12: 11.3% utilization (flight=35.7s, idle=281.7s, total=317.5s)
+   Drone 13: 24.0% utilization (flight=78.6s, idle=248.6s, total=327.2s)
+   Drone 14: 21.3% utilization (flight=69.8s, idle=257.4s, total=327.2s)
+   Drone 15: 12.9% utilization (flight=42.1s, idle=285.0s, total=327.2s)
+   Drone 16: 20.6% utilization (flight=67.4s, idle=259.8s, total=327.2s)
+   Drone 17: 24.0% utilization (flight=78.6s, idle=248.6s, total=327.2s)
+   Drone 18: 16.3% utilization (flight=53.5s, idle=273.7s, total=327.2s)
+   Drone 19: 24.8% utilization (flight=81.3s, idle=245.9s, total=327.2s)
+
+--- Queue Depth (Optional Metrics) ---
+6. Avg Queue Length:            0.50 events
+7. Max Queue Length:            1 events
+
+--- Per-Fire Breakdown ---
+  Zone 1: dispatch=0.00s, arrival=4.91s, extinguish=15.46s
+  Zone 2: dispatch=0.00s, arrival=13.55s, extinguish=17.55s
+  Zone 3: dispatch=0.00s, arrival=10.62s, extinguish=29.24s
+  Zone 4: dispatch=0.00s, arrival=21.30s, extinguish=45.63s
+  Zone 5: dispatch=0.00s, arrival=17.73s, extinguish=21.73s
+
+--- Drone Statistics ---
+Avg flight time:         73.52 seconds
+Avg idle time:           252.44 seconds
+Total fleet distance:    171030.1 units
+
+============================================================
+
+[14:13:28.841] === END SUMMARY ===
+[14:14:57.509] === FINAL METRICS SUMMARY ===
+
+============================================================
+              SIMULATION METRICS SUMMARY
+============================================================
+
+--- Simulation Overview ---
+Total duration:          413.87 seconds
+Fires reported:          5
+Fires extinguished:      5
+Total drone trips:       57
+Total faults:            0
+
+--- Response & Completion Times (Required Metrics) ---
+1. Avg Event Response Time:     13.62 seconds
+2. Max Event Response Time:     21.30 seconds
+3. Avg Event Completion Time:   25.92 seconds
+4. Max Event Completion Time:   45.63 seconds
+
+5. Drone Utilization (Required Metric) ---
+   Drone 0: 34.3% utilization (flight=123.2s, idle=235.9s, total=359.1s)
+   Drone 1: 27.0% utilization (flight=94.5s, idle=255.7s, total=350.2s)
+   Drone 2: 21.7% utilization (flight=75.1s, idle=270.6s, total=345.7s)
+   Drone 3: 31.7% utilization (flight=108.2s, idle=233.1s, total=341.3s)
+   Drone 4: 16.6% utilization (flight=53.7s, idle=269.0s, total=322.7s)
+   Drone 5: 35.6% utilization (flight=116.5s, idle=210.7s, total=327.2s)
+   Drone 6: 12.3% utilization (flight=39.9s, idle=284.0s, total=323.9s)
+   Drone 7: 31.4% utilization (flight=102.6s, idle=224.6s, total=327.2s)
+   Drone 8: 19.2% utilization (flight=62.7s, idle=264.5s, total=327.2s)
+   Drone 9: 26.1% utilization (flight=85.3s, idle=241.9s, total=327.2s)
+   Drone 10: 33.8% utilization (flight=110.4s, idle=216.8s, total=327.2s)
+   Drone 11: 13.9% utilization (flight=56.5s, idle=350.1s, total=406.6s)
+   Drone 12: 9.1% utilization (flight=35.7s, idle=356.1s, total=391.8s)
+   Drone 13: 28.8% utilization (flight=119.2s, idle=294.9s, total=414.1s)
+   Drone 14: 28.1% utilization (flight=110.4s, idle=281.9s, total=392.4s)
+   Drone 15: 20.6% utilization (flight=80.1s, idle=308.1s, total=388.2s)
+   Drone 16: 24.3% utilization (flight=94.1s, idle=293.6s, total=387.7s)
+   Drone 17: 29.3% utilization (flight=110.4s, idle=267.1s, total=377.5s)
+   Drone 18: 21.5% utilization (flight=80.2s, idle=292.8s, total=373.0s)
+   Drone 19: 32.4% utilization (flight=119.2s, idle=248.6s, total=367.8s)
+
+--- Queue Depth (Optional Metrics) ---
+6. Avg Queue Length:            0.50 events
+7. Max Queue Length:            1 events
+
+--- Per-Fire Breakdown ---
+  Zone 1: dispatch=0.00s, arrival=4.91s, extinguish=15.46s
+  Zone 2: dispatch=0.00s, arrival=13.55s, extinguish=17.55s
+  Zone 3: dispatch=0.00s, arrival=10.62s, extinguish=29.24s
+  Zone 4: dispatch=0.00s, arrival=21.30s, extinguish=45.63s
+  Zone 5: dispatch=0.00s, arrival=17.73s, extinguish=21.73s
+
+--- Drone Statistics ---
+Avg flight time:         88.90 seconds
+Avg idle time:           269.99 seconds
+Total fleet distance:    207637.5 units
+
+============================================================
+
+[14:14:57.509] === END SUMMARY ===
+[14:16:34.589] === Simulation session started ===
+[14:16:34.918] === Simulation session started ===
+[14:16:47.029] === FINAL METRICS SUMMARY ===
+
+============================================================
+              SIMULATION METRICS SUMMARY
+============================================================
+
+--- Simulation Overview ---
+Total duration:          7.43 seconds
+Fires reported:          1
+Fires extinguished:      1
+Total drone trips:       0
+Total faults:            0
+
+--- Response & Completion Times (Required Metrics) ---
+1. Avg Event Response Time:     3.43 seconds
+2. Max Event Response Time:     3.43 seconds
+3. Avg Event Completion Time:   7.43 seconds
+4. Max Event Completion Time:   7.43 seconds
+
+5. Drone Utilization (Required Metric) ---
+   Drone 0: 78.8% utilization (flight=7.4s, idle=2.0s, total=9.4s)
+   Drone 1: 0.0% utilization (flight=0.0s, idle=9.4s, total=9.4s)
+   Drone 2: 0.0% utilization (flight=0.0s, idle=9.4s, total=9.4s)
+   Drone 3: 0.0% utilization (flight=0.0s, idle=9.4s, total=9.4s)
+   Drone 4: 0.0% utilization (flight=0.0s, idle=9.4s, total=9.4s)
+   Drone 5: 0.0% utilization (flight=0.0s, idle=9.4s, total=9.4s)
+   Drone 6: 0.0% utilization (flight=0.0s, idle=9.4s, total=9.4s)
+   Drone 7: 0.0% utilization (flight=0.0s, idle=9.4s, total=9.4s)
+   Drone 8: 0.0% utilization (flight=0.0s, idle=9.4s, total=9.4s)
+   Drone 9: 0.0% utilization (flight=0.0s, idle=9.4s, total=9.4s)
+   Drone 10: 0.0% utilization (flight=0.0s, idle=9.4s, total=9.4s)
+   Drone 11: 0.0% utilization (flight=0.0s, idle=9.4s, total=9.4s)
+   Drone 12: 0.0% utilization (flight=0.0s, idle=9.4s, total=9.4s)
+   Drone 13: 0.0% utilization (flight=0.0s, idle=9.4s, total=9.4s)
+   Drone 14: 0.0% utilization (flight=0.0s, idle=9.4s, total=9.4s)
+   Drone 15: 0.0% utilization (flight=0.0s, idle=9.4s, total=9.4s)
+   Drone 16: 0.0% utilization (flight=0.0s, idle=9.4s, total=9.4s)
+   Drone 17: 0.0% utilization (flight=0.0s, idle=9.4s, total=9.4s)
+   Drone 18: 0.0% utilization (flight=0.0s, idle=9.4s, total=9.4s)
+   Drone 19: 0.0% utilization (flight=0.0s, idle=9.4s, total=9.4s)
+
+--- Queue Depth (Optional Metrics) ---
+6. Avg Queue Length:            0.50 events
+7. Max Queue Length:            1 events
+
+--- Per-Fire Breakdown ---
+  Zone 2: dispatch=0.01s, arrival=3.43s, extinguish=7.43s
+
+--- Drone Statistics ---
+Avg flight time:         0.37 seconds
+Avg idle time:           9.06 seconds
+Total fleet distance:    1758.6 units
+
+============================================================
+
+[14:16:47.029] === END SUMMARY ===
+[14:17:13.684] === FINAL METRICS SUMMARY ===
+
+============================================================
+              SIMULATION METRICS SUMMARY
+============================================================
+
+--- Simulation Overview ---
+Total duration:          34.08 seconds
+Fires reported:          5
+Fires extinguished:      5
+Total drone trips:       7
+Total faults:            0
+
+--- Response & Completion Times (Required Metrics) ---
+1. Avg Event Response Time:     3.44 seconds
+2. Max Event Response Time:     5.40 seconds
+3. Avg Event Completion Time:   11.32 seconds
+4. Max Event Completion Time:   17.50 seconds
+
+5. Drone Utilization (Required Metric) ---
+   Drone 0: 24.0% utilization (flight=7.4s, idle=23.6s, total=31.0s)
+   Drone 1: 26.7% utilization (flight=8.4s, idle=23.0s, total=31.4s)
+   Drone 2: 48.4% utilization (flight=14.7s, idle=15.7s, total=30.4s)
+   Drone 3: 39.7% utilization (flight=11.2s, idle=17.0s, total=28.2s)
+   Drone 4: 29.7% utilization (flight=7.8s, idle=18.4s, total=26.1s)
+   Drone 5: 54.7% utilization (flight=14.0s, idle=11.6s, total=25.6s)
+   Drone 6: 52.0% utilization (flight=11.2s, idle=10.4s, total=21.6s)
+   Drone 7: 46.2% utilization (flight=8.1s, idle=9.4s, total=17.5s)
+   Drone 8: 0.0% utilization (flight=0.0s, idle=9.4s, total=9.4s)
+   Drone 9: 0.0% utilization (flight=0.0s, idle=9.4s, total=9.4s)
+   Drone 10: 0.0% utilization (flight=0.0s, idle=9.4s, total=9.4s)
+   Drone 11: 0.0% utilization (flight=0.0s, idle=9.4s, total=9.4s)
+   Drone 12: 0.0% utilization (flight=0.0s, idle=9.4s, total=9.4s)
+   Drone 13: 0.0% utilization (flight=0.0s, idle=9.4s, total=9.4s)
+   Drone 14: 0.0% utilization (flight=0.0s, idle=9.4s, total=9.4s)
+   Drone 15: 0.0% utilization (flight=0.0s, idle=9.4s, total=9.4s)
+   Drone 16: 0.0% utilization (flight=0.0s, idle=9.4s, total=9.4s)
+   Drone 17: 0.0% utilization (flight=0.0s, idle=9.4s, total=9.4s)
+   Drone 18: 0.0% utilization (flight=0.0s, idle=9.4s, total=9.4s)
+   Drone 19: 0.0% utilization (flight=0.0s, idle=9.4s, total=9.4s)
+
+--- Queue Depth (Optional Metrics) ---
+6. Avg Queue Length:            0.50 events
+7. Max Queue Length:            1 events
+
+--- Per-Fire Breakdown ---
+  Zone 1: dispatch=0.00s, arrival=1.24s, extinguish=9.88s
+  Zone 2: dispatch=0.01s, arrival=3.43s, extinguish=7.43s
+  Zone 3: dispatch=0.00s, arrival=2.67s, extinguish=13.34s
+  Zone 4: dispatch=0.00s, arrival=5.40s, extinguish=17.50s
+  Zone 5: dispatch=0.00s, arrival=4.46s, extinguish=8.46s
+
+--- Drone Statistics ---
+Avg flight time:         4.14 seconds
+Avg idle time:           12.10 seconds
+Total fleet distance:    23838.4 units
+
+============================================================
+
+[14:17:13.684] === END SUMMARY ===
+[14:49:45.606] === Simulation session started ===
+[14:49:45.905] === Simulation session started ===
+[14:51:32.873] === Simulation session started ===
+[14:51:34.191] === FINAL METRICS SUMMARY ===
+
+============================================================
+              SIMULATION METRICS SUMMARY
+============================================================
+
+--- Simulation Overview ---
+Total duration:          1.16 seconds
+Fires reported:          1
+Fires extinguished:      1
+Total drone trips:       0
+Total faults:            0
+
+--- Response & Completion Times (Required Metrics) ---
+1. Avg Event Response Time:     0.00 seconds
+2. Max Event Response Time:     0.00 seconds
+3. Avg Event Completion Time:   1.16 seconds
+4. Max Event Completion Time:   1.16 seconds
+
+5. Drone Utilization (Required Metric) ---
+   Drone 1: 18.3% utilization (flight=0.2s, idle=0.7s, total=0.9s)
+
+--- Queue Depth (Optional Metrics) ---
+6. Avg Queue Length:            0.50 events
+7. Max Queue Length:            1 events
+
+--- Per-Fire Breakdown ---
+  Zone 1: dispatch=1.00s, arrival=0.00s, extinguish=1.16s
+
+--- Drone Statistics ---
+Avg flight time:         0.16 seconds
+Avg idle time:           0.70 seconds
+Total fleet distance:    28.3 units
+
+============================================================
+
+[14:51:34.191] === END SUMMARY ===
+[14:53:38.120] === Simulation session started ===
+[14:53:38.500] === Simulation session started ===
+[14:53:53.906] === FINAL METRICS SUMMARY ===
+
+============================================================
+              SIMULATION METRICS SUMMARY
+============================================================
+
+--- Simulation Overview ---
+Total duration:          10.80 seconds
+Fires reported:          1
+Fires extinguished:      1
+Total drone trips:       0
+Total faults:            0
+
+--- Response & Completion Times (Required Metrics) ---
+1. Avg Event Response Time:     6.80 seconds
+2. Max Event Response Time:     6.80 seconds
+3. Avg Event Completion Time:   10.80 seconds
+4. Max Event Completion Time:   10.80 seconds
+
+5. Drone Utilization (Required Metric) ---
+   Drone 0: 84.3% utilization (flight=10.8s, idle=2.0s, total=12.8s)
+   Drone 1: 0.0% utilization (flight=0.0s, idle=12.8s, total=12.8s)
+   Drone 2: 0.0% utilization (flight=0.0s, idle=12.8s, total=12.8s)
+   Drone 3: 0.0% utilization (flight=0.0s, idle=12.8s, total=12.8s)
+   Drone 4: 0.0% utilization (flight=0.0s, idle=12.8s, total=12.8s)
+   Drone 5: 0.0% utilization (flight=0.0s, idle=12.8s, total=12.8s)
+   Drone 6: 0.0% utilization (flight=0.0s, idle=12.8s, total=12.8s)
+   Drone 7: 0.0% utilization (flight=0.0s, idle=12.8s, total=12.8s)
+   Drone 8: 0.0% utilization (flight=0.0s, idle=12.8s, total=12.8s)
+   Drone 9: 0.0% utilization (flight=0.0s, idle=12.8s, total=12.8s)
+   Drone 10: 0.0% utilization (flight=0.0s, idle=12.8s, total=12.8s)
+   Drone 11: 0.0% utilization (flight=0.0s, idle=12.8s, total=12.8s)
+   Drone 12: 0.0% utilization (flight=0.0s, idle=12.8s, total=12.8s)
+   Drone 13: 0.0% utilization (flight=0.0s, idle=12.8s, total=12.8s)
+   Drone 14: 0.0% utilization (flight=0.0s, idle=12.8s, total=12.8s)
+   Drone 15: 0.0% utilization (flight=0.0s, idle=12.8s, total=12.8s)
+   Drone 16: 0.0% utilization (flight=0.0s, idle=12.8s, total=12.8s)
+   Drone 17: 0.0% utilization (flight=0.0s, idle=12.8s, total=12.8s)
+   Drone 18: 0.0% utilization (flight=0.0s, idle=12.8s, total=12.8s)
+   Drone 19: 0.0% utilization (flight=0.0s, idle=12.8s, total=12.8s)
+
+--- Queue Depth (Optional Metrics) ---
+6. Avg Queue Length:            0.50 events
+7. Max Queue Length:            1 events
+
+--- Per-Fire Breakdown ---
+  Zone 2: dispatch=0.01s, arrival=6.80s, extinguish=10.80s
+
+--- Drone Statistics ---
+Avg flight time:         0.54 seconds
+Avg idle time:           12.26 seconds
+Total fleet distance:    1758.6 units
+
+============================================================
+
+[14:53:53.906] === END SUMMARY ===
+[14:54:26.560] === FINAL METRICS SUMMARY ===
+
+============================================================
+              SIMULATION METRICS SUMMARY
+============================================================
+
+--- Simulation Overview ---
+Total duration:          43.46 seconds
+Fires reported:          5
+Fires extinguished:      5
+Total drone trips:       7
+Total faults:            0
+
+--- Response & Completion Times (Required Metrics) ---
+1. Avg Event Response Time:     6.83 seconds
+2. Max Event Response Time:     10.70 seconds
+3. Avg Event Completion Time:   16.10 seconds
+4. Max Event Completion Time:   26.88 seconds
+
+5. Drone Utilization (Required Metric) ---
+   Drone 0: 29.0% utilization (flight=10.8s, idle=26.5s, total=37.3s)
+   Drone 1: 24.3% utilization (flight=10.7s, idle=33.4s, total=44.1s)
+   Drone 2: 54.2% utilization (flight=23.4s, idle=19.8s, total=43.1s)
+   Drone 3: 40.0% utilization (flight=16.4s, idle=24.6s, total=41.0s)
+   Drone 4: 24.2% utilization (flight=9.1s, idle=28.6s, total=37.7s)
+   Drone 5: 59.2% utilization (flight=22.0s, idle=15.2s, total=37.2s)
+   Drone 6: 51.8% utilization (flight=16.4s, idle=15.3s, total=31.7s)
+   Drone 7: 48.7% utilization (flight=12.2s, idle=12.8s, total=25.0s)
+   Drone 8: 0.0% utilization (flight=0.0s, idle=12.8s, total=12.8s)
+   Drone 9: 0.0% utilization (flight=0.0s, idle=12.8s, total=12.8s)
+   Drone 10: 0.0% utilization (flight=0.0s, idle=12.8s, total=12.8s)
+   Drone 11: 0.0% utilization (flight=0.0s, idle=12.8s, total=12.8s)
+   Drone 12: 0.0% utilization (flight=0.0s, idle=12.8s, total=12.8s)
+   Drone 13: 0.0% utilization (flight=0.0s, idle=12.8s, total=12.8s)
+   Drone 14: 0.0% utilization (flight=0.0s, idle=12.8s, total=12.8s)
+   Drone 15: 0.0% utilization (flight=0.0s, idle=12.8s, total=12.8s)
+   Drone 16: 0.0% utilization (flight=0.0s, idle=12.8s, total=12.8s)
+   Drone 17: 0.0% utilization (flight=0.0s, idle=12.8s, total=12.8s)
+   Drone 18: 0.0% utilization (flight=0.0s, idle=12.8s, total=12.8s)
+   Drone 19: 0.0% utilization (flight=0.0s, idle=12.8s, total=12.8s)
+
+--- Queue Depth (Optional Metrics) ---
+6. Avg Queue Length:            0.50 events
+7. Max Queue Length:            1 events
+
+--- Per-Fire Breakdown ---
+  Zone 1: dispatch=0.00s, arrival=2.46s, extinguish=11.30s
+  Zone 2: dispatch=0.01s, arrival=6.80s, extinguish=10.80s
+  Zone 3: dispatch=0.00s, arrival=5.32s, extinguish=18.64s
+  Zone 4: dispatch=0.00s, arrival=10.70s, extinguish=26.88s
+  Zone 5: dispatch=0.00s, arrival=8.88s, extinguish=12.88s
+
+--- Drone Statistics ---
+Avg flight time:         6.05 seconds
+Avg idle time:           16.48 seconds
+Total fleet distance:    23894.3 units
+
+============================================================
+
+[14:54:26.560] === END SUMMARY ===
+[14:55:16.767] === FINAL METRICS SUMMARY ===
+
+============================================================
+              SIMULATION METRICS SUMMARY
+============================================================
+
+--- Simulation Overview ---
+Total duration:          93.67 seconds
+Fires reported:          5
+Fires extinguished:      5
+Total drone trips:       14
+Total faults:            0
+
+--- Response & Completion Times (Required Metrics) ---
+1. Avg Event Response Time:     6.83 seconds
+2. Max Event Response Time:     10.70 seconds
+3. Avg Event Completion Time:   16.10 seconds
+4. Max Event Completion Time:   26.88 seconds
+
+5. Drone Utilization (Required Metric) ---
+   Drone 0: 29.0% utilization (flight=10.8s, idle=26.5s, total=37.3s)
+   Drone 1: 24.3% utilization (flight=10.7s, idle=33.4s, total=44.1s)
+   Drone 2: 54.2% utilization (flight=23.4s, idle=19.8s, total=43.1s)
+   Drone 3: 40.0% utilization (flight=16.4s, idle=24.6s, total=41.0s)
+   Drone 4: 24.2% utilization (flight=9.1s, idle=28.6s, total=37.7s)
+   Drone 5: 59.2% utilization (flight=22.0s, idle=15.2s, total=37.2s)
+   Drone 6: 51.8% utilization (flight=16.4s, idle=15.3s, total=31.7s)
+   Drone 7: 18.6% utilization (flight=12.2s, idle=53.2s, total=65.4s)
+   Drone 8: 19.9% utilization (flight=10.7s, idle=43.0s, total=53.7s)
+   Drone 9: 38.4% utilization (flight=18.9s, idle=30.4s, total=49.3s)
+   Drone 10: 50.3% utilization (flight=22.0s, idle=21.7s, total=43.7s)
+   Drone 11: 54.0% utilization (flight=23.4s, idle=19.9s, total=43.2s)
+   Drone 12: 43.4% utilization (flight=16.4s, idle=21.4s, total=37.7s)
+   Drone 13: 59.4% utilization (flight=18.7s, idle=12.8s, total=31.5s)
+   Drone 14: 51.8% utilization (flight=14.7s, idle=13.7s, total=28.4s)
+   Drone 15: 54.1% utilization (flight=15.1s, idle=12.8s, total=27.9s)
+   Drone 16: 33.5% utilization (flight=6.5s, idle=12.8s, total=19.3s)
+   Drone 17: 0.0% utilization (flight=0.0s, idle=12.8s, total=12.8s)
+   Drone 18: 0.0% utilization (flight=0.0s, idle=12.8s, total=12.8s)
+   Drone 19: 0.0% utilization (flight=0.0s, idle=12.8s, total=12.8s)
+
+--- Queue Depth (Optional Metrics) ---
+6. Avg Queue Length:            0.50 events
+7. Max Queue Length:            1 events
+
+--- Per-Fire Breakdown ---
+  Zone 1: dispatch=0.00s, arrival=2.46s, extinguish=11.30s
+  Zone 2: dispatch=0.01s, arrival=6.80s, extinguish=10.80s
+  Zone 3: dispatch=0.00s, arrival=5.32s, extinguish=18.64s
+  Zone 4: dispatch=0.00s, arrival=10.70s, extinguish=26.88s
+  Zone 5: dispatch=0.00s, arrival=8.88s, extinguish=12.88s
+
+--- Drone Statistics ---
+Avg flight time:         13.37 seconds
+Avg idle time:           22.17 seconds
+Total fleet distance:    54512.3 units
+
+============================================================
+
+[14:55:16.767] === END SUMMARY ===
+[15:35:59.655] === Simulation session started ===
+[15:35:59.971] === Simulation session started ===
+[15:36:15.458] === FINAL METRICS SUMMARY ===
+
+============================================================
+              SIMULATION METRICS SUMMARY
+============================================================
+
+--- Simulation Overview ---
+Total duration:          10.81 seconds
+Fires reported:          1
+Fires extinguished:      1
+Service requests:        0
+Total drone trips:       0
+Total faults:            0
+
+--- Response & Completion Times (Required Metrics) ---
+1. Avg Event Response Time:     6.80 seconds
+2. Max Event Response Time:     6.80 seconds
+3. Avg Event Completion Time:   10.81 seconds
+4. Max Event Completion Time:   10.81 seconds
+
+5. Drone Utilization (Required Metric) ---
+   Drone 0: 84.3% utilization (flight=10.8s, idle=2.0s, total=12.8s)
+   Drone 1: 0.0% utilization (flight=0.0s, idle=12.8s, total=12.8s)
+   Drone 2: 0.0% utilization (flight=0.0s, idle=12.8s, total=12.8s)
+   Drone 3: 0.0% utilization (flight=0.0s, idle=12.8s, total=12.8s)
+   Drone 4: 0.0% utilization (flight=0.0s, idle=12.8s, total=12.8s)
+   Drone 5: 0.0% utilization (flight=0.0s, idle=12.8s, total=12.8s)
+   Drone 6: 0.0% utilization (flight=0.0s, idle=12.8s, total=12.8s)
+   Drone 7: 0.0% utilization (flight=0.0s, idle=12.8s, total=12.8s)
+   Drone 8: 0.0% utilization (flight=0.0s, idle=12.8s, total=12.8s)
+   Drone 9: 0.0% utilization (flight=0.0s, idle=12.8s, total=12.8s)
+   Drone 10: 0.0% utilization (flight=0.0s, idle=12.8s, total=12.8s)
+   Drone 11: 0.0% utilization (flight=0.0s, idle=12.8s, total=12.8s)
+   Drone 12: 0.0% utilization (flight=0.0s, idle=12.8s, total=12.8s)
+   Drone 13: 0.0% utilization (flight=0.0s, idle=12.8s, total=12.8s)
+   Drone 14: 0.0% utilization (flight=0.0s, idle=12.8s, total=12.8s)
+   Drone 15: 0.0% utilization (flight=0.0s, idle=12.8s, total=12.8s)
+   Drone 16: 0.0% utilization (flight=0.0s, idle=12.8s, total=12.8s)
+   Drone 17: 0.0% utilization (flight=0.0s, idle=12.8s, total=12.8s)
+   Drone 18: 0.0% utilization (flight=0.0s, idle=12.8s, total=12.8s)
+   Drone 19: 0.0% utilization (flight=0.0s, idle=12.8s, total=12.8s)
+
+--- Queue Depth (Optional Metrics) ---
+6. Avg Queue Length:            0.50 events
+7. Max Queue Length:            1 events
+
+--- Per-Fire Breakdown ---
+  Zone 2 @ 00:03:32: dispatch=0.01s, arrival=6.80s, extinguish=10.81s
+
+--- Drone Statistics ---
+Avg flight time:         0.54 seconds
+Avg idle time:           12.27 seconds
+Total fleet distance:    1758.6 units
+
+============================================================
+
+[15:36:15.458] === END SUMMARY ===
+[15:36:48.108] === FINAL METRICS SUMMARY ===
+
+============================================================
+              SIMULATION METRICS SUMMARY
+============================================================
+
+--- Simulation Overview ---
+Total duration:          43.46 seconds
+Fires reported:          3
+Fires extinguished:      3
+Service requests:        2
+Total drone trips:       7
+Total faults:            0
+
+--- Response & Completion Times (Required Metrics) ---
+1. Avg Event Response Time:     7.61 seconds
+2. Max Event Response Time:     10.70 seconds
+3. Avg Event Completion Time:   18.77 seconds
+4. Max Event Completion Time:   26.87 seconds
+
+5. Drone Utilization (Required Metric) ---
+   Drone 0: 29.0% utilization (flight=10.8s, idle=26.5s, total=37.3s)
+   Drone 1: 24.3% utilization (flight=10.7s, idle=33.4s, total=44.1s)
+   Drone 2: 54.2% utilization (flight=23.4s, idle=19.8s, total=43.1s)
+   Drone 3: 40.0% utilization (flight=16.4s, idle=24.6s, total=41.0s)
+   Drone 4: 24.2% utilization (flight=9.1s, idle=28.6s, total=37.7s)
+   Drone 5: 59.2% utilization (flight=22.0s, idle=15.2s, total=37.2s)
+   Drone 6: 51.7% utilization (flight=16.4s, idle=15.3s, total=31.7s)
+   Drone 7: 48.7% utilization (flight=12.2s, idle=12.8s, total=25.0s)
+   Drone 8: 0.0% utilization (flight=0.0s, idle=12.8s, total=12.8s)
+   Drone 9: 0.0% utilization (flight=0.0s, idle=12.8s, total=12.8s)
+   Drone 10: 0.0% utilization (flight=0.0s, idle=12.8s, total=12.8s)
+   Drone 11: 0.0% utilization (flight=0.0s, idle=12.8s, total=12.8s)
+   Drone 12: 0.0% utilization (flight=0.0s, idle=12.8s, total=12.8s)
+   Drone 13: 0.0% utilization (flight=0.0s, idle=12.8s, total=12.8s)
+   Drone 14: 0.0% utilization (flight=0.0s, idle=12.8s, total=12.8s)
+   Drone 15: 0.0% utilization (flight=0.0s, idle=12.8s, total=12.8s)
+   Drone 16: 0.0% utilization (flight=0.0s, idle=12.8s, total=12.8s)
+   Drone 17: 0.0% utilization (flight=0.0s, idle=12.8s, total=12.8s)
+   Drone 18: 0.0% utilization (flight=0.0s, idle=12.8s, total=12.8s)
+   Drone 19: 0.0% utilization (flight=0.0s, idle=12.8s, total=12.8s)
+
+--- Queue Depth (Optional Metrics) ---
+6. Avg Queue Length:            0.50 events
+7. Max Queue Length:            1 events
+
+--- Per-Fire Breakdown ---
+  Zone 2 @ 00:03:32: dispatch=0.01s, arrival=6.80s, extinguish=10.81s
+  Zone 3 @ 00:16:16: dispatch=0.00s, arrival=5.32s, extinguish=18.64s
+  Zone 4 @ 00:17:21: dispatch=0.00s, arrival=10.70s, extinguish=26.87s
+
+--- Drone Statistics ---
+Avg flight time:         6.05 seconds
+Avg idle time:           16.49 seconds
+Total fleet distance:    23894.3 units
+
+============================================================
+
+[15:36:48.108] === END SUMMARY ===
+[15:37:38.318] === FINAL METRICS SUMMARY ===
+
+============================================================
+              SIMULATION METRICS SUMMARY
+============================================================
+
+--- Simulation Overview ---
+Total duration:          93.67 seconds
+Fires reported:          3
+Fires extinguished:      3
+Service requests:        8
+Total drone trips:       14
+Total faults:            0
+
+--- Response & Completion Times (Required Metrics) ---
+1. Avg Event Response Time:     7.61 seconds
+2. Max Event Response Time:     10.70 seconds
+3. Avg Event Completion Time:   18.77 seconds
+4. Max Event Completion Time:   26.87 seconds
+
+5. Drone Utilization (Required Metric) ---
+   Drone 0: 29.0% utilization (flight=10.8s, idle=26.5s, total=37.3s)
+   Drone 1: 24.3% utilization (flight=10.7s, idle=33.4s, total=44.1s)
+   Drone 2: 54.2% utilization (flight=23.4s, idle=19.8s, total=43.1s)
+   Drone 3: 40.0% utilization (flight=16.4s, idle=24.6s, total=41.0s)
+   Drone 4: 24.2% utilization (flight=9.1s, idle=28.6s, total=37.7s)
+   Drone 5: 59.2% utilization (flight=22.0s, idle=15.2s, total=37.2s)
+   Drone 6: 51.7% utilization (flight=16.4s, idle=15.3s, total=31.7s)
+   Drone 7: 18.6% utilization (flight=12.2s, idle=53.2s, total=65.4s)
+   Drone 8: 19.9% utilization (flight=10.7s, idle=43.0s, total=53.7s)
+   Drone 9: 38.4% utilization (flight=18.9s, idle=30.4s, total=49.3s)
+   Drone 10: 50.3% utilization (flight=22.0s, idle=21.7s, total=43.7s)
+   Drone 11: 54.0% utilization (flight=23.4s, idle=19.9s, total=43.2s)
+   Drone 12: 43.4% utilization (flight=16.4s, idle=21.4s, total=37.7s)
+   Drone 13: 59.4% utilization (flight=18.7s, idle=12.8s, total=31.6s)
+   Drone 14: 51.7% utilization (flight=14.7s, idle=13.7s, total=28.4s)
+   Drone 15: 54.1% utilization (flight=15.1s, idle=12.8s, total=27.9s)
+   Drone 16: 33.5% utilization (flight=6.5s, idle=12.8s, total=19.3s)
+   Drone 17: 0.0% utilization (flight=0.0s, idle=12.8s, total=12.8s)
+   Drone 18: 0.0% utilization (flight=0.0s, idle=12.8s, total=12.8s)
+   Drone 19: 0.0% utilization (flight=0.0s, idle=12.8s, total=12.8s)
+
+--- Queue Depth (Optional Metrics) ---
+6. Avg Queue Length:            0.50 events
+7. Max Queue Length:            1 events
+
+--- Per-Fire Breakdown ---
+  Zone 2 @ 00:03:32: dispatch=0.01s, arrival=6.80s, extinguish=10.81s
+  Zone 3 @ 00:16:16: dispatch=0.00s, arrival=5.32s, extinguish=18.64s
+  Zone 4 @ 00:17:21: dispatch=0.00s, arrival=10.70s, extinguish=26.87s
+
+--- Drone Statistics ---
+Avg flight time:         13.37 seconds
+Avg idle time:           22.17 seconds
+Total fleet distance:    54512.3 units
+
+============================================================
+
+[15:37:38.318] === END SUMMARY ===
+[15:41:53.704] === Simulation session started ===
+[15:41:54.015] === Simulation session started ===
+[15:51:49.945] === FINAL METRICS SUMMARY ===
+
+============================================================
+              SIMULATION METRICS SUMMARY
+============================================================
+
+--- Simulation Overview ---
+Total duration:          591.24 seconds
+Fires reported:          22
+Fires extinguished:      22
+Service requests:        28
+Total drone trips:       82
+Total faults:            0
+
+--- Response & Completion Times (Required Metrics) ---
+1. Avg Event Response Time:     6.74 seconds
+2. Max Event Response Time:     12.74 seconds
+3. Avg Event Completion Time:   19.07 seconds
+4. Max Event Completion Time:   29.61 seconds
+
+5. Drone Utilization (Required Metric) ---
+   Drone 0: 17.7% utilization (flight=105.2s, idle=488.0s, total=593.2s)
+   Drone 1: 9.6% utilization (flight=56.7s, idle=533.2s, total=589.8s)
+   Drone 2: 13.8% utilization (flight=82.0s, idle=510.4s, total=592.4s)
+   Drone 3: 7.9% utilization (flight=46.9s, idle=543.8s, total=590.7s)
+   Drone 4: 10.1% utilization (flight=59.5s, idle=531.7s, total=591.2s)
+   Drone 5: 17.3% utilization (flight=102.7s, idle=490.5s, total=593.2s)
+   Drone 6: 16.6% utilization (flight=98.7s, idle=494.5s, total=593.2s)
+   Drone 7: 13.4% utilization (flight=79.6s, idle=513.2s, total=592.7s)
+   Drone 8: 13.2% utilization (flight=78.3s, idle=514.9s, total=593.2s)
+   Drone 9: 11.4% utilization (flight=67.5s, idle=525.7s, total=593.2s)
+   Drone 10: 12.2% utilization (flight=72.4s, idle=520.8s, total=593.2s)
+   Drone 11: 14.1% utilization (flight=83.7s, idle=509.5s, total=593.2s)
+   Drone 12: 11.7% utilization (flight=69.4s, idle=523.8s, total=593.2s)
+   Drone 13: 12.9% utilization (flight=76.2s, idle=517.0s, total=593.2s)
+   Drone 14: 10.2% utilization (flight=60.0s, idle=531.2s, total=591.3s)
+   Drone 15: 14.3% utilization (flight=85.1s, idle=508.2s, total=593.2s)
+   Drone 16: 12.0% utilization (flight=71.1s, idle=522.1s, total=593.2s)
+   Drone 17: 14.6% utilization (flight=86.4s, idle=506.8s, total=593.2s)
+   Drone 18: 10.1% utilization (flight=59.9s, idle=533.4s, total=593.2s)
+   Drone 19: 12.9% utilization (flight=76.2s, idle=517.0s, total=593.2s)
+
+--- Queue Depth (Optional Metrics) ---
+6. Avg Queue Length:            0.50 events
+7. Max Queue Length:            1 events
+
+--- Per-Fire Breakdown ---
+  Zone 2 @ 00:03:32: dispatch=0.01s, arrival=6.81s, extinguish=10.81s
+  Zone 3 @ 00:16:16: dispatch=0.00s, arrival=5.32s, extinguish=18.64s
+  Zone 4 @ 00:17:21: dispatch=0.00s, arrival=10.70s, extinguish=26.87s
+  Zone 5 @ 01:24:54: dispatch=0.00s, arrival=8.88s, extinguish=12.88s
+  Zone 4 @ 01:48:35: dispatch=0.00s, arrival=8.18s, extinguish=28.65s
+  Zone 5 @ 01:57:35: dispatch=0.00s, arrival=12.74s, extinguish=29.61s
+  Zone 2 @ 01:59:24: dispatch=0.00s, arrival=5.52s, extinguish=20.29s
+  Zone 2 @ 02:30:12: dispatch=0.00s, arrival=6.77s, extinguish=10.77s
+  Zone 3 @ 02:31:45: dispatch=0.00s, arrival=5.31s, extinguish=18.63s
+  Zone 5 @ 03:05:49: dispatch=0.00s, arrival=8.88s, extinguish=25.75s
+  Zone 3 @ 03:50:25: dispatch=0.00s, arrival=5.31s, extinguish=18.63s
+  Zone 1 @ 03:50:48: dispatch=0.04s, arrival=2.50s, extinguish=6.50s
+  Zone 2 @ 04:05:19: dispatch=0.00s, arrival=6.77s, extinguish=21.54s
+  Zone 4 @ 04:57:36: dispatch=0.00s, arrival=8.17s, extinguish=24.34s
+  Zone 3 @ 04:57:50: dispatch=0.22s, arrival=5.53s, extinguish=18.85s
+  Zone 2 @ 05:06:30: dispatch=0.00s, arrival=6.77s, extinguish=10.77s
+  Zone 1 @ 05:21:49: dispatch=0.00s, arrival=2.46s, extinguish=12.91s
+  Zone 4 @ 05:54:55: dispatch=0.00s, arrival=8.17s, extinguish=24.34s
+  Zone 1 @ 06:21:16: dispatch=0.00s, arrival=2.46s, extinguish=12.92s
+  Zone 3 @ 06:23:01: dispatch=0.00s, arrival=5.32s, extinguish=18.63s
+  Zone 5 @ 06:44:30: dispatch=0.00s, arrival=8.87s, extinguish=25.75s
+  Zone 2 @ 06:54:24: dispatch=0.00s, arrival=6.77s, extinguish=21.53s
+
+--- Drone Statistics ---
+Avg flight time:         75.88 seconds
+Avg idle time:           516.77 seconds
+Total fleet distance:    291910.7 units
+
+============================================================
+
+[15:51:49.945] === END SUMMARY ===
+[16:23:48.343] === Simulation session started ===
+[16:23:48.728] === Simulation session started ===
+[16:31:45.269] === Simulation session started ===
+[16:31:45.569] === Simulation session started ===
+[16:43:19.597] === Simulation session started ===
+[16:43:19.906] === Simulation session started ===
+[16:53:11.709] === FINAL METRICS SUMMARY ===
+
+============================================================
+              SIMULATION METRICS SUMMARY
+============================================================
+
+--- Simulation Overview ---
+Total duration:          582.38 seconds
+Fires reported:          50
+Fires extinguished:      50
+Service requests:        28
+Total drone trips:       86
+Total faults:            5
+
+--- Response & Completion Times (Required Metrics) ---
+1. Avg Event Response Time:     3.32 seconds
+2. Max Event Response Time:     5.07 seconds
+3. Avg Event Completion Time:   12.22 seconds
+4. Max Event Completion Time:   20.01 seconds
+
+5. Drone Utilization (Required Metric) ---
+   Drone 0: 9.6% utilization (flight=56.3s, idle=531.1s, total=587.4s)
+   Drone 1: 10.3% utilization (flight=60.7s, idle=526.6s, total=587.4s)
+   Drone 2: 9.1% utilization (flight=53.5s, idle=533.9s, total=587.4s)
+   Drone 3: 9.6% utilization (flight=56.4s, idle=531.0s, total=587.4s)
+   Drone 4: 10.1% utilization (flight=59.2s, idle=528.2s, total=587.4s)
+   Drone 5: 11.1% utilization (flight=65.1s, idle=522.3s, total=587.4s)
+   Drone 6: 9.1% utilization (flight=53.5s, idle=533.9s, total=587.4s)
+   Drone 7: 9.6% utilization (flight=56.6s, idle=530.8s, total=587.4s)
+   Drone 8: 96.3% utilization (flight=565.8s, idle=21.6s, total=587.4s)
+   Drone 9: 10.8% utilization (flight=63.6s, idle=523.8s, total=587.4s)
+   Drone 10: 8.6% utilization (flight=50.3s, idle=537.1s, total=587.4s)
+   Drone 11: 10.1% utilization (flight=59.4s, idle=527.9s, total=587.4s)
+   Drone 12: 8.9% utilization (flight=52.3s, idle=533.4s, total=585.8s)
+   Drone 13: 9.0% utilization (flight=52.9s, idle=534.4s, total=587.4s)
+   Drone 14: 4.9% utilization (flight=28.8s, idle=558.1s, total=586.9s)
+   Drone 15: 8.9% utilization (flight=52.4s, idle=535.0s, total=587.4s)
+   Drone 16: 8.4% utilization (flight=49.5s, idle=537.9s, total=587.4s)
+   Drone 17: 8.8% utilization (flight=51.8s, idle=535.6s, total=587.4s)
+   Drone 18: 9.8% utilization (flight=57.4s, idle=530.0s, total=587.4s)
+   Drone 19: 9.4% utilization (flight=55.2s, idle=532.2s, total=587.4s)
+
+--- Queue Depth (Optional Metrics) ---
+6. Avg Queue Length:            0.53 events
+7. Max Queue Length:            2 events
+
+--- Per-Fire Breakdown ---
+  Zone 2 @ 00:03:32: dispatch=0.01s, arrival=4.94s, extinguish=8.94s
+  Zone 1 @ 00:13:39: dispatch=0.00s, arrival=1.23s, extinguish=12.47s
+  Zone 5 @ 00:14:29: dispatch=0.00s, arrival=4.95s, extinguish=8.95s
+  Zone 3 @ 00:16:16: dispatch=0.00s, arrival=3.16s, extinguish=13.83s
+  Zone 4 @ 00:17:21: dispatch=0.00s, arrival=4.59s, extinguish=16.69s
+  Zone 1 @ 00:47:28: dispatch=0.00s, arrival=1.23s, extinguish=5.23s
+  Zone 2 @ 00:51:10: dispatch=0.00s, arrival=3.39s, extinguish=7.39s
+  Zone 4 @ 00:55:49: dispatch=0.00s, arrival=4.09s, extinguish=16.19s
+  Zone 5 @ 00:55:58: dispatch=0.32s, arrival=4.77s, extinguish=17.21s
+  Zone 3 @ 01:00:48: dispatch=0.00s, arrival=2.66s, extinguish=13.32s
+  Zone 1 @ 01:16:12: dispatch=0.00s, arrival=1.23s, extinguish=5.23s
+  Zone 5 @ 01:24:54: dispatch=0.00s, arrival=4.45s, extinguish=8.45s
+  Zone 3 @ 01:27:11: dispatch=0.00s, arrival=2.66s, extinguish=13.32s
+  Zone 4 @ 01:48:35: dispatch=0.00s, arrival=4.09s, extinguish=16.18s
+  Zone 5 @ 01:57:35: dispatch=0.00s, arrival=4.44s, extinguish=20.01s
+  Zone 2 @ 01:59:24: dispatch=0.00s, arrival=3.39s, extinguish=14.77s
+  Zone 3 @ 02:00:23: dispatch=0.00s, arrival=2.66s, extinguish=11.79s
+  Zone 1 @ 02:01:54: dispatch=0.00s, arrival=1.23s, extinguish=10.72s
+  Zone 4 @ 02:07:03: dispatch=0.71s, arrival=4.80s, extinguish=8.80s
+  Zone 5 @ 02:13:44: dispatch=0.63s, arrival=5.07s, extinguish=17.51s
+  Zone 2 @ 02:30:12: dispatch=0.00s, arrival=3.39s, extinguish=7.39s
+  Zone 3 @ 02:31:45: dispatch=0.00s, arrival=2.66s, extinguish=13.32s
+  Zone 4 @ 02:31:55: dispatch=0.30s, arrival=4.39s, extinguish=16.48s
+  Zone 2 @ 03:03:49: dispatch=0.00s, arrival=3.39s, extinguish=7.39s
+  Zone 5 @ 03:05:49: dispatch=0.00s, arrival=4.44s, extinguish=16.88s
+  Zone 4 @ 03:49:06: dispatch=0.00s, arrival=4.09s, extinguish=16.18s
+  Zone 3 @ 03:50:25: dispatch=0.00s, arrival=2.66s, extinguish=13.67s
+  Zone 1 @ 03:50:48: dispatch=0.04s, arrival=1.27s, extinguish=5.27s
+  Zone 2 @ 04:05:19: dispatch=0.00s, arrival=3.39s, extinguish=14.78s
+  Zone 5 @ 04:35:59: dispatch=0.00s, arrival=4.44s, extinguish=16.89s
+  Zone 4 @ 04:57:36: dispatch=0.00s, arrival=4.09s, extinguish=16.18s
+  Zone 3 @ 04:57:50: dispatch=0.22s, arrival=2.88s, extinguish=13.54s
+  Zone 2 @ 05:06:30: dispatch=0.00s, arrival=3.39s, extinguish=7.39s
+  Zone 1 @ 05:21:49: dispatch=0.00s, arrival=1.23s, extinguish=10.46s
+  Zone 4 @ 05:22:29: dispatch=0.00s, arrival=4.09s, extinguish=8.09s
+  Zone 1 @ 05:28:46: dispatch=2.12s, arrival=3.35s, extinguish=7.35s
+  Zone 5 @ 05:49:12: dispatch=0.00s, arrival=4.44s, extinguish=16.88s
+  Zone 4 @ 05:54:55: dispatch=0.00s, arrival=4.09s, extinguish=16.18s
+  Zone 2 @ 06:09:34: dispatch=0.00s, arrival=3.39s, extinguish=7.39s
+  Zone 1 @ 06:21:16: dispatch=0.00s, arrival=1.23s, extinguish=10.46s
+  Zone 3 @ 06:23:01: dispatch=0.00s, arrival=2.66s, extinguish=13.32s
+  Zone 4 @ 06:31:02: dispatch=0.00s, arrival=4.09s, extinguish=16.18s
+  Zone 3 @ 06:42:12: dispatch=0.00s, arrival=2.66s, extinguish=6.66s
+  Zone 5 @ 06:44:30: dispatch=0.00s, arrival=4.44s, extinguish=16.88s
+  Zone 1 @ 06:44:59: dispatch=0.00s, arrival=1.23s, extinguish=5.23s
+  Zone 2 @ 06:54:24: dispatch=0.00s, arrival=3.39s, extinguish=14.78s
+  Zone 4 @ 06:56:58: dispatch=0.00s, arrival=4.09s, extinguish=8.09s
+  Zone 1 @ 07:20:05: dispatch=0.00s, arrival=1.23s, extinguish=10.46s
+  Zone 3 @ 07:22:03: dispatch=0.00s, arrival=2.66s, extinguish=13.32s
+  Zone 5 @ 07:54:45: dispatch=0.00s, arrival=4.44s, extinguish=16.88s
+
+--- Drone Statistics ---
+Avg flight time:         80.03 seconds
+Avg idle time:           507.24 seconds
+Total fleet distance:    294221.4 units
+
+============================================================
+
+[16:53:11.709] === END SUMMARY ===

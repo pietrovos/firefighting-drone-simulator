@@ -9,39 +9,47 @@ import java.util.concurrent.ConcurrentHashMap;
 import javax.swing.*;
 import javax.swing.border.Border;
 
-/** Shared map and animation behavior for the runtime dashboard. */
+/**
+ * The GUI class is responsible for creating and managing the graphical user interface
+ * of the application. It provides a grid layout for visualizing a 30x30 tile array
+ * and a separate panel for displaying drone assignments.
+ */
 public abstract class GUI {
     public static final int rows = 30;
     public static final int cols = 30;
+    // Dark theme colors
     private static final Color WINDOW_BACKGROUND = new Color(30, 32, 38);
     private static final Color PANEL_BACKGROUND = new Color(40, 44, 52);
-    private static final Color GRID_BACKGROUND = new Color(35, 38, 45);
-    private static final Color CELL_BORDER = new Color(50, 54, 62);
+    private static final Color GRID_BACKGROUND = new Color(20, 40, 29);
+    private static final Color CELL_BORDER = new Color(27, 53, 39);
     private static final Color ZONE_OUTLINE = new Color(86, 156, 214);
     private static final Color HOME_OUTLINE = new Color(120, 144, 156);
-    private static final Color HOME_FILL = new Color(69, 90, 100);
-    private static final Color FAULT_STUCK = new Color(233, 30, 99);
-    private static final Color FAULT_NOZZLE_CLOSED = new Color(26, 188, 156);
-    private static final Color FAULT_NOZZLE_OPEN = new Color(155, 89, 182);
-    private static final Color FAULT_PACKET_LOSS = new Color(241, 196, 15);
-    private static final Color FAULT_PACKET_CORRUPTION = new Color(230, 126, 34);
-    private static final Color FAULT_OFFLINE = new Color(99, 110, 114);
+    private static final Color HOME_FILL = new Color(105, 112, 117);
+    // Fault colors
+    private static final Color FAULT_STUCK = new Color(233, 30, 99);        // Pink/magenta
+    private static final Color FAULT_NOZZLE_CLOSED = new Color(26, 188, 156);  // Teal
+    private static final Color FAULT_NOZZLE_OPEN = new Color(155, 89, 182);    // Purple
+    private static final Color FAULT_PACKET_LOSS = new Color(241, 196, 15);    // Yellow
+    private static final Color FAULT_PACKET_CORRUPTION = new Color(230, 126, 34); // Orange
+    private static final Color FAULT_OFFLINE = new Color(99, 110, 114);        // Gray
+    // Text colors
     private static final Color TEXT_PRIMARY = new Color(212, 212, 212);
     private static final Color TEXT_SECONDARY = new Color(150, 150, 150);
     private static final Color BORDER_COLOR = new Color(60, 63, 70);
-
+    
+    // Fire animation colors - cycle through these for flickering effect
     private static final Color[] FIRE_COLORS = {
-        new Color(255, 87, 34),
-        new Color(255, 152, 0),
-        new Color(255, 193, 7),
-        new Color(244, 67, 54),
-        new Color(255, 112, 67),
-        new Color(255, 167, 38),
+        new Color(255, 87, 34, 102),   // Deep orange
+        new Color(255, 152, 0, 102),   // Orange
+        new Color(255, 193, 7, 102),   // Amber/yellow
+        new Color(244, 67, 54, 102),   // Red
+        new Color(255, 112, 67, 102),  // Deep orange light
+        new Color(255, 167, 38, 102),  // Orange light
     };
     private static final int FIRE_ANIMATION_INTERVAL_MS = 150;
-
+    
     JPanel[][] tile;
-    private boolean[][] zoneLabelTiles = new boolean[rows][cols];
+    private boolean[][] zoneLabelTiles = new boolean[rows][cols]; // tracks which tile has a zone marker on it
 
     JFrame mainWindow;
     JPanel grid;
@@ -50,36 +58,42 @@ public abstract class GUI {
     protected final Map<Integer, Zone> zones;
     private final Map<Integer, Point> droneCells = new ConcurrentHashMap<>();
     private final Map<Integer, Deque<Point>> droneMotionPaths = new ConcurrentHashMap<>();
-    private final Map<Integer, Point> faultedDroneCells = new ConcurrentHashMap<>();
-    private final Map<Integer, String> faultedDroneFaults = new ConcurrentHashMap<>();
-    private final Map<Integer, Point> fireCells = new ConcurrentHashMap<>();
-    private final Map<Integer, List<Point>> fireSpreadCells = new ConcurrentHashMap<>();
+    private final Map<Integer, Point> faultedDroneCells = new ConcurrentHashMap<>(); // tracks faulted drones separately
+    private final Map<Integer, String> faultedDroneFaults = new ConcurrentHashMap<>(); // fault type for each faulted drone
+    private final Map<Integer, Point> fireCells = new ConcurrentHashMap<>(); // center cell for each fire
+    private final Map<Integer, List<Point>> fireSpreadCells = new ConcurrentHashMap<>(); // all cells for each fire
+    private final Map<Integer, Integer> initialFireTileCounts = new ConcurrentHashMap<>();
+    private final Map<Integer, List<Point>> waterDropTargets = new ConcurrentHashMap<>();
     private final Map<Integer, String> fireLabels = new ConcurrentHashMap<>();
-    private final Map<Integer, Point> droppingDroneCells = new ConcurrentHashMap<>();
-    private final Map<Integer, Integer> droppingDroneZones = new ConcurrentHashMap<>();
-    private final Map<Integer, Double> droneWaterLevels = new ConcurrentHashMap<>();
-    private final Map<Integer, Double> droneBatteryLevels = new ConcurrentHashMap<>();
-    private final Map<Integer, Double> droneFuelLevels = new ConcurrentHashMap<>();
+    private final Map<Integer, Point> droppingDroneCells = new ConcurrentHashMap<>(); // drones actively dropping water
+    private final Map<Integer, Integer> droppingDroneZones = new ConcurrentHashMap<>(); // zone each dropping drone is targeting
+    private final Map<Integer, Double> droneWaterLevels = new ConcurrentHashMap<>(); // current water level per drone
+    private final Map<Integer, Double> droneBatteryLevels = new ConcurrentHashMap<>(); // current battery % per drone
+    private final Map<Integer, Double> droneFuelLevels = new ConcurrentHashMap<>(); // current fuel % per drone
     private javax.swing.Timer fireAnimationTimer;
     private javax.swing.Timer waterDropTimer;
     private javax.swing.Timer droneMotionTimer;
     private int fireAnimationFrame = 0;
     private int waterDropFrame = 0;
-
+    
+    // Water drop animation colors - pulse between drone blue and cyan
     private static final Color[] WATER_DROP_DRONE_COLORS = {
-        new Color(52, 152, 219),
-        new Color(41, 182, 246),
-        new Color(0, 188, 212),
-        new Color(41, 182, 246),
+        new Color(52, 152, 219),   // Drone blue
+        new Color(41, 182, 246),   // Light blue
+        new Color(0, 188, 212),    // Cyan
+        new Color(41, 182, 246),   // Light blue
     };
+    // Water splash colors for fire tiles being doused
     private static final Color[] WATER_SPLASH_COLORS = {
-        new Color(100, 181, 246),
-        new Color(79, 195, 247),
-        new Color(128, 222, 234),
+        new Color(100, 181, 246),  // Light blue splash
+        new Color(79, 195, 247),   // Cyan splash
+        new Color(128, 222, 234),  // Aqua splash
     };
     private static final int WATER_DROP_INTERVAL_MS = 200;
     private static final int DRONE_MOTION_INTERVAL_MS = 35;
     private static final Point HOME_CELL = new Point(0, 0);
+    // Presentation-only margin keeps HQ outside the incident-zone outlines.
+    private static final int ZONE_GRID_OFFSET = 1;
 
     /**
      * Constructs a GUI with no pre-defined zones. Equivalent to {@code GUI(Collections.emptyMap())}.
@@ -88,7 +102,29 @@ public abstract class GUI {
         this(Collections.emptyMap());
     }
 
-    /** Builds the dashboard when a graphical environment is available. */
+    /**
+     * Constructs a new instance of the GUI class and initializes the graphical user interface.
+     * The interface consists of a 30x30 grid of tiles for visualization and a panel for
+     * displaying drone assignments. The method configures the main window, initializes
+     * grid elements with default styling, and sets up the assignment panel.
+     * <p>
+     * In headless environments (e.g., CI/automated tests), Swing components are not
+     * initialized to avoid {@link HeadlessException}. All fields will be {@code null}
+     * in that case and operations guarded accordingly.
+     * <p>
+     * Key features of the GUI:
+     * - The main window is configured with a size of 750x650 pixels and uses a BorderLayout.
+     * - A grid with 30 rows and 30 columns is created, where each cell is styled with a light gray background
+     *   and a black border.
+     * - An assignment panel at the bottom displays drone-to-zone mapping with labels and is styled
+     *   with a titled border labelled "Assignments".
+     * - A legend panel on the right explains tile colours and label symbols.
+     * - Zone outlines are drawn on the grid for each entry in the {@code zones} map.
+     * - The GUI is centered on the screen when created.
+     *
+     * @param zones map of zone ID to {@link Zone} whose boundaries are drawn as outlines on the grid.
+     *              May be {@code null} or empty; null is treated as an empty map.
+     */
     public GUI(Map<Integer, Zone> zones) {
         if (zones == null) zones = Collections.emptyMap();
         this.zones = new HashMap<>(zones);
@@ -103,6 +139,7 @@ public abstract class GUI {
         mainWindow = new JFrame();
         grid = new JPanel();
 
+        // Use gradient panels for visual polish
         Color gradientTop = new Color(48, 52, 62);
         Color gradientBottom = new Color(35, 38, 46);
         assignmentPanel = new GradientPanel(gradientTop, gradientBottom);
@@ -115,6 +152,7 @@ public abstract class GUI {
         mainWindow.setLayout(new BorderLayout(14, 14));
         mainWindow.getContentPane().setBackground(WINDOW_BACKGROUND);
 
+        // Grid with subtle rounded border and shadow
         grid.setLayout(new GridLayout(rows, cols, 0, 0));
         grid.setBackground(GRID_BACKGROUND);
         grid.setBorder(BorderFactory.createCompoundBorder(
@@ -123,7 +161,7 @@ public abstract class GUI {
         ));
         for (int i = 0; i < rows; ++i) {
             for (int j = 0; j < cols; j++) {
-                JPanel cell = new JPanel();
+                JPanel cell = new ForestCell(i, j);
                 cell.setBackground(TileTypes.NEUTRAL.getColor());
                 cell.setBorder(BorderFactory.createLineBorder(CELL_BORDER));
                 tile[i][j] = cell;
@@ -137,10 +175,12 @@ public abstract class GUI {
         }
         drawHomeSpot();
 
+        // Assignment panel with gradient, shadow, and rounded corners
         assignmentPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 8, 6));
         assignmentPanel.setPreferredSize(new Dimension(600, 56));
         assignmentPanel.setBorder(createStyledBorder(4, 10, 8));
 
+        // Legend panel with gradient, shadow, and rounded corners
         legendPanel.setLayout(new GridBagLayout());
         legendPanel.setBorder(createStyledBorder(4, 10, 12));
 
@@ -155,7 +195,7 @@ public abstract class GUI {
         addLegendTextEntry(legendPanel, legendConstraints, "DX", "Drone Number X");
         addLegendItem(legendPanel, legendConstraints, HOME_FILL, "Drone Home");
         addLegendItem(legendPanel, legendConstraints, TileTypes.DRONE_DROPPING.getColor(), "Drone Dropping Water");
-        addLegendItem(legendPanel, legendConstraints, TileTypes.NEUTRAL.getColor(), "Neutral");
+        addLegendItem(legendPanel, legendConstraints, TileTypes.NEUTRAL.getColor(), "Forest terrain");
         addLegendItem(legendPanel, legendConstraints, TileTypes.FIRE_EXTINGUISHED.getColor(), "Extinguished Fire");
 
         addLegendItem(legendPanel, legendConstraints, TileTypes.FIRE.getColor(), "Fire");
@@ -192,6 +232,22 @@ public abstract class GUI {
         if (mainWindow != null) mainWindow.setVisible(true);
     }
 
+    /**
+     * Updates the visual appearance of a specific tile in the grid.
+     * The tile's background colour is set according to its type.
+     * The update is dispatched on the Event Dispatch Thread (EDT) to ensure thread safety.
+     *
+     * @param t   The type of the tile, represented as a {@link TileTypes} value.
+     *            Determines the colour applied:
+     *            - {@code FIRE}: Red
+     *            - {@code FIRE_EXTINGUISHED}: Green
+     *            - {@code NEUTRAL}: Light gray
+     *            - {@code DRONE_LOCATION}: Orange
+     *            - {@code null} or any other value: Black
+     * @param row The row index of the tile to update, where 0 is the topmost row.
+     * @param col The column index of the tile to update, where 0 is the leftmost column.
+     * @param labelData string to be used as a label for the updated square
+     */
     public void updateTile(TileTypes t, int row, int col, String labelData) {
         if (tile == null) return;
         if (row < 0 || row >= rows || col < 0 || col >= cols) return;
@@ -204,7 +260,7 @@ public abstract class GUI {
                 case FIRE -> {
                     tile[row][col].removeAll();
                     tile[row][col].setBackground(TileTypes.FIRE.getColor());
-                    JLabel sevLabel = new JLabel(labelData);
+                    JLabel sevLabel = new MapLabel(labelData);
                     sevLabel.setForeground(Color.WHITE);
                     sevLabel.setFont(new Font("SansSerif" , Font.BOLD, 12));
                     tile[row][col].setLayout(new BorderLayout());
@@ -226,7 +282,7 @@ public abstract class GUI {
                     //only write label if not over a zone
                     if(!zoneLabelTiles[row][col]){
                         tile[row][col].removeAll();
-                        JLabel idLabel = new JLabel(labelData);
+                        JLabel idLabel = new MapLabel(labelData);
                         idLabel.setFont(new Font("SansSerif", Font.BOLD, 10));
                         tile[row][col].setLayout(new BorderLayout());
                         tile[row][col].add(idLabel, BorderLayout.NORTH);
@@ -236,7 +292,7 @@ public abstract class GUI {
                     tile[row][col].setBackground(TileTypes.DRONE_FAULTED.getColor());
                     if (!zoneLabelTiles[row][col]) {
                         tile[row][col].removeAll();
-                        JLabel idLabel = new JLabel(labelData);
+                        JLabel idLabel = new MapLabel(labelData);
                         idLabel.setFont(new Font("SansSerif", Font.BOLD, 10));
                         idLabel.setForeground(Color.WHITE);
                         tile[row][col].setLayout(new BorderLayout());
@@ -250,6 +306,19 @@ public abstract class GUI {
         });
     }
 
+    /**
+     * Override to allow update tile to be called without the data parameter.
+     *
+     * @param t   The type of the tile, represented as a {@link TileTypes} value.
+     *            Determines the colour applied:
+     *            - {@code FIRE}: Red
+     *            - {@code FIRE_EXTINGUISHED}: Green
+     *            - {@code NEUTRAL}: Light gray
+     *            - {@code DRONE_LOCATION}: Orange
+     *            - {@code null} or any other value: Black
+     * @param row The row index of the tile to update, where 0 is the topmost row.
+     * @param col The column index of the tile to update, where 0 is the leftmost column.
+     */
     public void updateTile(TileTypes t, int row, int col){
         updateTile(t,row,col,"");
     }
@@ -366,11 +435,12 @@ public abstract class GUI {
         boolean isNewFire = !fireCells.containsKey(zoneId);
         fireCells.put(zoneId, center);
         fireLabels.put(zoneId, severityLabel == null ? "" : severityLabel);
-
+        
         // Calculate fire spread based on severity
         List<Point> spreadTiles = calculateFireSpread(center, severityLabel, zone);
-        fireSpreadCells.put(zoneId, spreadTiles);
-
+        fireSpreadCells.put(zoneId, new java.util.concurrent.CopyOnWriteArrayList<>(spreadTiles));
+        initialFireTileCounts.put(zoneId, spreadTiles.size());
+        
         // Draw all fire tiles
         for (int i = 0; i < spreadTiles.size(); i++) {
             Point p = spreadTiles.get(i);
@@ -378,19 +448,19 @@ public abstract class GUI {
             String label = (p.equals(center)) ? fireLabels.get(zoneId) : "";
             updateFireTile(p.y, p.x, label, getFireColor(i));
         }
-
+        
         if (isNewFire) {
             incrementActiveFires();
             startFireAnimation();
         }
     }
-
+    
     private List<Point> calculateFireSpread(Point center, String severity, Zone zone) {
         List<Point> tiles = new ArrayList<>();
         tiles.add(center);
-
+        
         if (severity == null) return tiles;
-
+        
         // Determine spread size based on severity
         int spread = switch (severity.toUpperCase()) {
             case "H", "HIGH" -> 1;      // 3x3 = 9 tiles
@@ -398,15 +468,15 @@ public abstract class GUI {
             case "L", "LOW" -> 0;       // just center
             default -> 0;
         };
-
+        
         if (spread == 0) return tiles;
-
+        
         // Add surrounding tiles within zone bounds
-        int zoneStartCol = zone.xOrigin() / 100;
-        int zoneEndCol = zone.xEnd() / 100;
-        int zoneStartRow = zone.yOrigin() / 100;
-        int zoneEndRow = zone.yEnd() / 100;
-
+        int zoneStartCol = zone.xOrigin() / 100 + ZONE_GRID_OFFSET;
+        int zoneEndCol = zone.xEnd() / 100 + ZONE_GRID_OFFSET;
+        int zoneStartRow = zone.yOrigin() / 100 + ZONE_GRID_OFFSET;
+        int zoneEndRow = zone.yEnd() / 100 + ZONE_GRID_OFFSET;
+        
         for (int dy = -spread; dy <= spread; dy++) {
             for (int dx = -spread; dx <= spread; dx++) {
                 if (dx == 0 && dy == 0) continue; // skip center, already added
@@ -426,38 +496,38 @@ public abstract class GUI {
         }
         return tiles;
     }
-
+    
     private void startFireAnimation() {
         if (fireAnimationTimer != null && fireAnimationTimer.isRunning()) return;
         if (GraphicsEnvironment.isHeadless()) return;
-
+        
         fireAnimationTimer = new javax.swing.Timer(FIRE_ANIMATION_INTERVAL_MS, e -> {
             fireAnimationFrame = (fireAnimationFrame + 1) % FIRE_COLORS.length;
             animateAllFires();
         });
         fireAnimationTimer.start();
     }
-
+    
     private void stopFireAnimationIfNoFires() {
         if (fireSpreadCells.isEmpty() && fireAnimationTimer != null) {
             fireAnimationTimer.stop();
             fireAnimationTimer = null;
         }
     }
-
+    
     private void animateAllFires() {
         if (tile == null) return;
         for (Map.Entry<Integer, List<Point>> entry : fireSpreadCells.entrySet()) {
             int zoneId = entry.getKey();
-            if (droppingDroneZones.containsValue(zoneId)) continue;
             List<Point> tiles = entry.getValue();
             Point center = fireCells.get(zoneId);
             String label = fireLabels.getOrDefault(zoneId, "");
-
+            
             for (int i = 0; i < tiles.size(); i++) {
                 Point p = tiles.get(i);
                 // Skip if there's a drone on this tile
                 if (isDroneAtCell(p.x, p.y)) continue;
+                if (waterDropTargets.values().stream().anyMatch(targets -> targets.contains(p))) continue;
                 // Each tile gets a slightly offset color for variety
                 int colorIndex = (fireAnimationFrame + i) % FIRE_COLORS.length;
                 String tileLabel = p.equals(center) ? label : "";
@@ -465,7 +535,7 @@ public abstract class GUI {
             }
         }
     }
-
+    
     private boolean isDroneAtCell(int col, int row) {
         for (Point dronePos : droneCells.values()) {
             if (dronePos.x == col && dronePos.y == row) return true;
@@ -475,7 +545,7 @@ public abstract class GUI {
         }
         return false;
     }
-
+    
     private Color getFireColor(int offset) {
         return FIRE_COLORS[(fireAnimationFrame + offset) % FIRE_COLORS.length];
     }
@@ -486,7 +556,7 @@ public abstract class GUI {
         int col = HOME_CELL.x;
         tile[row][col].setBackground(HOME_FILL);
         tile[row][col].removeAll();
-        JLabel homeLabel = new JLabel("HOME");
+        JLabel homeLabel = new MapLabel("HQ");
         homeLabel.setForeground(TEXT_PRIMARY);
         homeLabel.setFont(new Font("SansSerif", Font.BOLD, 9));
         tile[row][col].setLayout(new BorderLayout());
@@ -506,7 +576,7 @@ public abstract class GUI {
             if (!zoneLabelTiles[row][col]) {
                 tile[row][col].removeAll();
                 if (labelData != null && !labelData.isEmpty()) {
-                    JLabel label = new JLabel(labelData);
+                    JLabel label = new MapLabel(labelData);
                     label.setForeground(Color.WHITE);
                     label.setFont(new Font("SansSerif", Font.BOLD, 11));
                     tile[row][col].setLayout(new BorderLayout());
@@ -521,10 +591,11 @@ public abstract class GUI {
     public void clearFireIncident(int zoneId) {
         Point center = fireCells.remove(zoneId);
         List<Point> spreadTiles = fireSpreadCells.remove(zoneId);
+        initialFireTileCounts.remove(zoneId);
         fireLabels.remove(zoneId);
-
+        
         if (center == null) return;
-
+        
         // Clear the fire immediately. Do not leave a lingering completed marker.
         if (spreadTiles != null) {
             for (Point p : spreadTiles) {
@@ -550,11 +621,10 @@ public abstract class GUI {
         List<Point> spreadTiles = fireSpreadCells.get(zoneId);
         Point center = fireCells.get(zoneId);
         if (spreadTiles == null || center == null || spreadTiles.size() <= 1) return;
-
+        
         // Calculate how many tiles should remain based on water percentage
-        double percentRemaining = (double) remainingWater / totalWater;
-        int tilesToKeep = Math.max(1, (int) Math.ceil(spreadTiles.size() * percentRemaining));
-
+        int tilesToKeep = fireTilesToKeep(zoneId, spreadTiles.size(), remainingWater, totalWater);
+        
         // Remove tiles from the end of the list (outer tiles added last)
         while (spreadTiles.size() > tilesToKeep) {
             Point removed = spreadTiles.remove(spreadTiles.size() - 1);
@@ -716,8 +786,7 @@ public abstract class GUI {
         Point cell = droneCells.get(droneId);
         if (cell == null) return;
         droneMotionPaths.remove(droneId);
-        droppingDroneCells.remove(droneId);
-        droppingDroneZones.remove(droneId);
+        clearDroneDropping(droneId);
         // Track this faulted drone's position so other drones don't overwrite it
         faultedDroneCells.put(droneId, cell);
         faultedDroneFaults.put(droneId, faultName);
@@ -740,11 +809,32 @@ public abstract class GUI {
      * @param zoneId  the zone where the drone is dropping water
      */
     public void showDroneDropping(int droneId, int zoneId) {
+        String severity = fireLabels.getOrDefault(zoneId, "Low");
+        int totalWater = severity.equalsIgnoreCase("High") || severity.equalsIgnoreCase("H") ? 30
+                : severity.equalsIgnoreCase("Moderate") || severity.equalsIgnoreCase("M") ? 20 : 10;
+        showDroneDropping(droneId, zoneId, totalWater, totalWater,
+                (int) Math.floor(droneWaterLevels.getOrDefault(droneId, 15.0)));
+    }
+
+    public void showDroneDropping(int droneId, int zoneId, int remainingWater, int totalWater, int availableWater) {
         Point cell = droneCells.get(droneId);
         if (cell == null) return;
         droppingDroneCells.put(droneId, cell);
         droppingDroneZones.put(droneId, zoneId);
+        List<Point> fireTiles = fireSpreadCells.get(zoneId);
+        if (fireTiles != null) {
+            int afterDrop = Math.max(0, remainingWater - Math.max(0, availableWater));
+            int keep = fireTilesToKeep(zoneId, fireTiles.size(), afterDrop, totalWater);
+            waterDropTargets.put(droneId, List.copyOf(fireTiles.subList(Math.min(keep, fireTiles.size()), fireTiles.size())));
+        }
         startWaterDropAnimation();
+    }
+
+    private int fireTilesToKeep(int zoneId, int currentCount, int remainingWater, int totalWater) {
+        if (remainingWater <= 0) return 0;
+        if (totalWater <= 0) return currentCount;
+        int originalCount = initialFireTileCounts.getOrDefault(zoneId, currentCount);
+        return Math.min(currentCount, Math.max(1, (int) Math.ceil(originalCount * (double) remainingWater / totalWater)));
     }
 
     /**
@@ -755,6 +845,8 @@ public abstract class GUI {
     public void clearDroneDropping(int droneId) {
         droppingDroneCells.remove(droneId);
         droppingDroneZones.remove(droneId);
+        List<Point> targets = waterDropTargets.remove(droneId);
+        if (targets != null) targets.forEach(p -> restoreCell(p.y, p.x));
         stopWaterDropAnimationIfNone();
     }
 
@@ -789,7 +881,7 @@ public abstract class GUI {
 
             // Animate surrounding fire tiles with water splash only (no fire colors)
             if (zoneId != null) {
-                List<Point> fireTiles = fireSpreadCells.get(zoneId);
+                List<Point> fireTiles = waterDropTargets.get(droneId);
                 if (fireTiles != null) {
                     for (int i = 0; i < fireTiles.size(); i++) {
                         Point firePos = fireTiles.get(i);
@@ -811,7 +903,7 @@ public abstract class GUI {
             tile[row][col].setBackground(color);
             if (!zoneLabelTiles[row][col]) {
                 tile[row][col].removeAll();
-                JLabel label = new JLabel(labelData);
+                JLabel label = new MapLabel(labelData);
                 label.setFont(new Font("SansSerif", Font.BOLD, 10));
                 label.setForeground(Color.WHITE);
                 tile[row][col].setLayout(new BorderLayout());
@@ -839,7 +931,7 @@ public abstract class GUI {
             tile[row][col].setBackground(faultColor);
             if (!zoneLabelTiles[row][col]) {
                 tile[row][col].removeAll();
-                JLabel idLabel = new JLabel(labelData);
+                JLabel idLabel = new MapLabel(labelData);
                 idLabel.setFont(new Font("SansSerif", Font.BOLD, 10));
                 idLabel.setForeground(Color.WHITE);
                 tile[row][col].setLayout(new BorderLayout());
@@ -876,9 +968,22 @@ public abstract class GUI {
     }
 
     protected Point toGridCell(double xMeters, double yMeters) {
-        int col = Math.max(0, Math.min(cols - 1, (int) (xMeters / 100.0)));
-        int row = Math.max(0, Math.min(rows - 1, (int) (yMeters / 100.0)));
+        if (xMeters == 0 && yMeters == 0) return new Point(HOME_CELL);
+        int col = Math.max(ZONE_GRID_OFFSET, Math.min(cols - 1, (int) (xMeters / 100.0) + ZONE_GRID_OFFSET));
+        int row = Math.max(ZONE_GRID_OFFSET, Math.min(rows - 1, (int) (yMeters / 100.0) + ZONE_GRID_OFFSET));
         return new Point(col, row);
+    }
+
+    protected String mapCellDescription(int row, int col) {
+        if (isCivilianCell(row, col)) return "Civilian buildings / built-up area beside HQ";
+        if (row < ZONE_GRID_OFFSET || col < ZONE_GRID_OFFSET) return "HQ staging margin • outside response zones";
+        int x = (col - ZONE_GRID_OFFSET) * 100;
+        int y = (row - ZONE_GRID_OFFSET) * 100;
+        return "Map cell: " + x + "–" + (x + 100) + " m east, " + y + "–" + (y + 100) + " m north";
+    }
+
+    private static boolean isCivilianCell(int row, int col) {
+        return row == 0 && col == 1 || row == 1 && col == 0;
     }
 
     private void restoreCell(int row, int col) {
@@ -900,7 +1005,7 @@ public abstract class GUI {
             for (Point p : entry.getValue()) {
                 if (p.x == col && p.y == row) {
                     Point center = fireCells.get(zoneId);
-                    String label = (center != null && center.x == col && center.y == row)
+                    String label = (center != null && center.x == col && center.y == row) 
                             ? fireLabels.getOrDefault(zoneId, "") : "";
                     updateFireTile(row, col, label, getFireColor(0));
                     return;
@@ -916,10 +1021,10 @@ public abstract class GUI {
 
     public void drawZone(int zoneID, int startX, int startY, int endXCoord, int endYCoord, Color color) {
         if (tile == null) return; // headless guard
-        int x = startX / 100;
-        int y = startY / 100;
-        int endXExclusive = endXCoord / 100;
-        int endYExclusive = endYCoord / 100;
+        int x = startX / 100 + ZONE_GRID_OFFSET;
+        int y = startY / 100 + ZONE_GRID_OFFSET;
+        int endXExclusive = endXCoord / 100 + ZONE_GRID_OFFSET;
+        int endYExclusive = endYCoord / 100 + ZONE_GRID_OFFSET;
 
         if (endXExclusive <= x || endYExclusive <= y) return;
 
@@ -956,7 +1061,7 @@ public abstract class GUI {
         if (y >= 0 && y < rows && x >= 0 && x < cols) {
             String s = "Z"+zoneID;
             tile[y][x].removeAll();
-            JLabel zoneIdentifier = new JLabel(s);
+            JLabel zoneIdentifier = new MapLabel(s);
             zoneIdentifier.setFont(new Font("SansSerif" , Font.BOLD, 11));
             zoneIdentifier.setForeground(TEXT_PRIMARY);
             tile[y][x].setLayout(new BorderLayout());
@@ -1080,6 +1185,93 @@ public abstract class GUI {
                                         double batteryPct, double fuelPct) {
         String base = formatAssignmentText(droneId, zoneId, severityLabel, remainingWater, status);
         return base + " | B:" + String.format("%.0f", batteryPct) + "% F:" + String.format("%.0f", fuelPct) + "%";
+    }
+
+    /** Stable forest texture remains consistent when drones leave a cell. */
+    private static class ForestCell extends JPanel {
+        private final Color ground;
+        private final Color canopy;
+        private final int seed;
+        private final boolean civilian;
+
+        ForestCell(int row, int col) {
+            civilian = isCivilianCell(row, col);
+            seed = Math.floorMod(row * 73856093 ^ col * 19349663, 997);
+            int shade = (int) Math.round(7 * Math.sin(row * 0.42 + col * 0.19)
+                    + 5 * Math.cos(col * 0.37 - row * 0.16)) + seed % 7;
+            ground = new Color(28 + shade / 2, 66 + shade, 43 + shade / 2);
+            canopy = new Color(45 + shade / 2, 89 + shade, 54 + shade / 2);
+        }
+
+        @Override protected void paintComponent(Graphics graphics) {
+            super.paintComponent(graphics);
+            // Operational overlays keep their existing solid colors.
+            if (!TileTypes.NEUTRAL.getColor().equals(getBackground()) && getBackground().getAlpha() == 255) return;
+            Graphics2D g = (Graphics2D) graphics.create();
+            int w = getWidth();
+            int h = getHeight();
+            if (civilian) {
+                g.setColor(new Color(105, 112, 117));
+                g.fillRect(0, 0, w, h);
+                g.setColor(new Color(172, 180, 183));
+                g.fillRect(w / 7, h / 6, Math.max(2, w / 3), Math.max(2, h / 3));
+                g.fillRect(w / 2, h / 2, Math.max(2, w / 3), Math.max(2, h / 3));
+                g.setColor(new Color(74, 81, 87));
+                g.drawLine(0, h / 2, w / 2, h / 2);
+                g.drawLine(w / 2, 0, w / 2, h);
+                g.dispose();
+                return;
+            }
+            g.setColor(ground);
+            g.fillRect(0, 0, w, h);
+            g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+            g.setColor(canopy);
+            int diameter = Math.max(3, Math.min(w, h) * 2 / 3);
+            int x = (w - diameter) * (seed % 5) / 4;
+            int y = (h - diameter) * (seed % 3) / 2;
+            g.fillOval(x, y, diameter, diameter);
+            g.setColor(new Color(62, 111, 60, 65));
+            g.fillOval(x + diameter / 4, y + diameter / 5, diameter / 2, diameter / 2);
+            if (getBackground().getAlpha() < 255) {
+                g.setColor(getBackground());
+                g.fillRect(0, 0, w, h);
+            }
+            g.dispose();
+        }
+    }
+
+    /** Compact map labels scale with cells instead of becoming ellipses. */
+    private static class MapLabel extends JLabel {
+        MapLabel(String text) {
+            super(text);
+            setToolTipText(text);
+            addMouseListener(new java.awt.event.MouseAdapter() {
+                @Override public void mouseClicked(java.awt.event.MouseEvent event) {
+                    if (getParent() != null) getParent().dispatchEvent(
+                            SwingUtilities.convertMouseEvent(MapLabel.this, event, getParent()));
+                }
+            });
+        }
+
+        @Override protected void paintComponent(Graphics graphics) {
+            Graphics2D g = (Graphics2D) graphics.create();
+            g.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
+            String text = getText();
+            if (text == null || text.isEmpty()) { g.dispose(); return; }
+            // Keep the drone identifier visible; the complete fault is in the tooltip.
+            if (text.startsWith("D") && text.contains(":")) text = text.substring(0, text.indexOf(':'));
+            Font font = getFont();
+            while (font.getSize() > 6 && (g.getFontMetrics(font).stringWidth(text) > getWidth() - 1
+                    || g.getFontMetrics(font).getHeight() > getHeight())) {
+                font = font.deriveFont((float) font.getSize() - 1);
+            }
+            g.setFont(font);
+            g.setColor(getForeground());
+            java.awt.FontMetrics metrics = g.getFontMetrics();
+            g.drawString(text, Math.max(0, (getWidth() - metrics.stringWidth(text)) / 2),
+                    Math.max(metrics.getAscent(), (getHeight() - metrics.getHeight()) / 2 + metrics.getAscent()));
+            g.dispose();
+        }
     }
 
     // ========== CUSTOM UI COMPONENTS FOR VISUAL POLISH ==========

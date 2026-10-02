@@ -84,16 +84,46 @@ public class SimulationMetrics {
             this.lastY = 0;
         }
 
+        /**
+         * Retrieves the unique identifier for the drone.
+         *
+         * @return The unique drone ID as an integer.
+         */
         public int getDroneId() { return droneId; }
 
+        /**
+         * Retrieves the total time, in milliseconds, that the drone has been idle.
+         *
+         * @return The total idle time in milliseconds as a long value.
+         */
         public synchronized long getTotalIdleMs() { return totalIdleMs; }
 
+        /**
+         * Retrieves the total time, in milliseconds, that the drone has spent in flight.
+         *
+         * @return The total flight time in milliseconds as a long value.
+         */
         public synchronized long getTotalFlightMs() { return totalFlightMs; }
 
+        /**
+         * Retrieves the total distance travelled by the drone.
+         *
+         * @return The total distance travelled as a double value.
+         */
         public synchronized double getTotalDistanceTraveled() { return totalDistanceTraveled; }
 
+        /**
+         * Retrieves the total number of trips completed by the drone.
+         *
+         * @return The total number of trips completed as an integer.
+         */
         public synchronized int getTripsCompleted() { return tripsCompleted; }
 
+        /**
+         * Retrieves the total number of faults recorded for the drone.
+         *
+         * @return The total fault count as an integer.
+         */
         public synchronized int getFaultCount() { return faultCount; }
 
         /**
@@ -212,7 +242,7 @@ public class SimulationMetrics {
      * If a fire in the given zone has not been detected previously, this method adds the zone ID
      * to the fire detection map with the current timestamp and increments the total fire reports.
      *
-     * @param report the incident being recorded
+     * @param zoneId the unique identifier of the zone where the fire was detected
      */
     public void recordIncidentReported(IncidentReport report) {
         FireIncidentKey key = keyOf(report);
@@ -229,7 +259,7 @@ public class SimulationMetrics {
      * Records the time when a fire dispatch is initiated for the specified zone.
      * If this is the first dispatch for the given zone, the current timestamp is recorded.
      *
-     * @param report the incident being dispatched
+     * @param zoneId the unique identifier of the zone where the fire dispatch occurred
      */
     public void recordFireDispatched(IncidentReport report) {
         fireFirstDispatchTime.putIfAbsent(keyOf(report), Instant.now());
@@ -248,7 +278,7 @@ public class SimulationMetrics {
      * Records the time a fire has been extinguished in the specified zone.
      * Updates the corresponding extinguishment time and increments the total fires extinguished count.
      *
-     * @param report the incident that was extinguished
+     * @param zoneId the unique identifier of the zone where the fire was extinguished
      */
     public void recordFireExtinguished(IncidentReport report) {
         Instant previous = fireExtinguishedTime.putIfAbsent(keyOf(report), Instant.now());

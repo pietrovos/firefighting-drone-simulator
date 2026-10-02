@@ -692,7 +692,16 @@ public class Scheduler implements Runnable {
             logEvent("Drone " + update.getDroneId() + " -> " + update.getState());
             // Start/stop water drop animation when entering/leaving DROPPING_AGENT state
             if (update.getState() == DroneState.DROPPING_AGENT && info.getAssignedZoneId() != null) {
-                gui.showDroneDropping(update.getDroneId(), info.getAssignedZoneId());
+                int zoneId = info.getAssignedZoneId();
+                IncidentReport incident = activeIncidentsByZone.get(zoneId);
+                if (incident != null) {
+                    int totalWater = incident.severity().getReqLitresOfWater();
+                    gui.showDroneDropping(update.getDroneId(), zoneId,
+                            remainingWaterByZone.getOrDefault(zoneId, totalWater), totalWater,
+                            (int) Math.floor(update.getWater()));
+                } else {
+                    gui.showDroneDropping(update.getDroneId(), zoneId);
+                }
             }
             if (previousState == DroneState.DROPPING_AGENT) { gui.clearDroneDropping(update.getDroneId()); }
         }

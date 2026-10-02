@@ -12,7 +12,7 @@ import java.util.logging.Logger;
 public class SchedulerMain {
     private static final Logger LOGGER = Logger.getLogger(SchedulerMain.class.getName());
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         LOGGER.info("[SchedulerMain] Starting Scheduler process");
         String zoneFilePath = args.length > 0
                 ? args[0]
@@ -20,8 +20,12 @@ public class SchedulerMain {
 
         // Bootstrap scheduler to load zones from the same zone file as the running scheduler
         Scheduler bootstrapScheduler = new Scheduler(zoneFilePath, null);
-        GUI gui = new RuntimeGUI(bootstrapScheduler.getZones());
-        gui.start();
+        GUI[] window = new GUI[1];
+        javax.swing.SwingUtilities.invokeAndWait(() -> {
+            window[0] = new RuntimeGUI(bootstrapScheduler.getZones());
+            window[0].start();
+        });
+        GUI gui = window[0];
 
         Scheduler scheduler = new Scheduler(zoneFilePath, gui);
         Thread schedulerThread = new Thread(scheduler, "scheduler");

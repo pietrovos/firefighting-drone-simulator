@@ -22,8 +22,8 @@ import java.util.logging.Logger;
  * The FireIncidentSubsystem class is responsible for processing fire incident events
  * from a specified CSV file and transmitting them to a remote Scheduler system over UDP.
  * <p>
- * This class implements the Runnable interface, enabling it to be executed as a single
- * task or within a thread. The primary function is to read and parse fire incident event
+ * This class implements the Runnable interface, enabling it to be executed as a single 
+ * task or within a thread. The primary function is to read and parse fire incident event 
  * data, validate the information, and send the data in a structured format to the Scheduler.
  * <p>
  * Key Features:
@@ -43,7 +43,7 @@ import java.util.logging.Logger;
  * - Interruption and error handling are managed properly to ensure smooth execution.
  * <p>
  * Internal Processing:
- * - Each line of the event file is parsed to extract relevant details like time, zone ID, event type,
+ * - Each line of the event file is parsed to extract relevant details like time, zone ID, event type, 
  *   severity, and optional fault type.
  * - Fault types are handled with fallback defaults in case of missing or invalid data.
  * - A time delay is imposed between subsequent events to simulate realistic event dispatching.
@@ -83,13 +83,13 @@ public class FireIncidentSubsystem implements Runnable {
     /**
      * Default constructor for the FireIncidentSubsystem.
      * <p>
-     * Initializes a new instance of the FireIncidentSubsystem using default configuration values
+     * Initializes a new instance of the FireIncidentSubsystem using default configuration values 
      * defined in the {@link FireIncidentConfig} class. These defaults include:
      * - The path to the fire incident event file.
      * - The hostname or IP address of the scheduler service.
      * - The port number of the scheduler service.
      * <p>
-     * This constructor delegates to the parameterized constructor
+     * This constructor delegates to the parameterized constructor 
      * {@link #FireIncidentSubsystem(String, String, int)} with these default values.
      */
     public FireIncidentSubsystem() { this( FireIncidentConfig.EVENT_FILE_PATH, FireIncidentConfig.SCHEDULER_HOST, FireIncidentConfig.SCHEDULER_PORT ); }
@@ -100,11 +100,11 @@ public class FireIncidentSubsystem implements Runnable {
      * and sends the corresponding incident reports to a scheduler service over UDP.
      * <p>
      * The file is expected to contain event data in a structured format, with the first
-     * line being a header that is skipped. Each subsequent line is parsed into an
-     * {@link IncidentReport} object. Valid reports are then sent to the scheduler service
+     * line being a header that is skipped. Each subsequent line is parsed into an 
+     * {@link IncidentReport} object. Valid reports are then sent to the scheduler service 
      * with a delay between transmissions to manage flow control.
      * <p>
-     * In case of errors during file reading, data transmission, or interruptions, appropriate
+     * In case of errors during file reading, data transmission, or interruptions, appropriate 
      * logging is performed, and the thread's interrupt status is set if interrupted.
      * <p>
      * Resources for file reading and UDP communication are managed using a try-with-resources block,
@@ -118,7 +118,7 @@ public class FireIncidentSubsystem implements Runnable {
     public void run () {
         try (BufferedReader reader = new BufferedReader(new FileReader(eventFilePath));
              UdpSender sender = new UdpSender(schedulerHost, schedulerPort)) {
-
+            
             int eventCount = 0;
             long startMs = System.currentTimeMillis();
             String header = reader.readLine(); // skip header
@@ -126,7 +126,7 @@ public class FireIncidentSubsystem implements Runnable {
                 LOGGER.log(Level.WARNING, "{0}Event file is empty: {1}", new Object[]{LOG_PREFIX, eventFilePath});
                 return;
             }
-
+            
             LocalTime previousEventTime = null;
             for (String line = reader.readLine(); line != null; line = reader.readLine()) {
                 IncidentReport report = parseIncidentReport(line);
@@ -149,12 +149,12 @@ public class FireIncidentSubsystem implements Runnable {
 
     /**
      * Parses a given string representing an incident report into an {@link IncidentReport} object.
-     * The input string is expected to be a comma-separated line containing details such as the
-     * timestamp, zone ID, event type, severity, and optional fault type. If the input string is invalid
+     * The input string is expected to be a comma-separated line containing details such as the 
+     * timestamp, zone ID, event type, severity, and optional fault type. If the input string is invalid 
      * or insufficient to create an {@link IncidentReport}, this method returns {@code null}.
      *
-     * @param line the input string containing the incident report data, structured in a
-     *             comma-separated format with at least four components (time, zone ID,
+     * @param line the input string containing the incident report data, structured in a 
+     *             comma-separated format with at least four components (time, zone ID, 
      *             event type, and severity).
      * @return an {@link IncidentReport} object constructed from the given string, or {@code null}
      *         if the input string is invalid or lacks the necessary components.

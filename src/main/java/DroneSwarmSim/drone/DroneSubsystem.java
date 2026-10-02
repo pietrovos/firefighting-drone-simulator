@@ -97,14 +97,55 @@ public class DroneSubsystem implements Runnable {
         this.listenPort = listenPort;
     }
 
+    /**
+     * Retrieves the unique identifier of the drone.
+     *
+     * @return the integer ID assigned to this drone.
+     */
     public int getDroneId() { return droneId; }
 
+    /**
+     * Retrieves the current operational state of the drone.
+     * <p>
+     * The state indicates the drone's status and activity, such as whether it is
+     * idle, en route to a task location, actively performing a task, or experiencing
+     * a fault condition.
+     *
+     * @return the current operational state of the drone as a {@code DroneState} enum value.
+     */
     public DroneState getState() { return state; }
 
+    /**
+     * Retrieves the current water level of the drone.
+     * <p>
+     * The water level represents the remaining amount of liquid agent 
+     * available for the drone to perform tasks such as firefighting or irrigation.
+     *
+     * @return the current water level as a double value, where the unit 
+     *         corresponds to the drone's configured measurement system.
+     */
     public double getWater() { return water; }
 
+    /**
+     * Retrieves the current battery level of the drone.
+     * <p>
+     * The battery level represents the remaining charge in the drone's battery
+     * as a percentage within the range of 0.0 to 100.0.
+     *
+     * @return the current battery level as a double value, where 0.0 indicates
+     *         a completely discharged battery and 100.0 indicates a fully charged battery.
+     */
     public double getBattery() { return battery; }
 
+    /**
+     * Retrieves the current fuel level of the drone.
+     * <p>
+     * The fuel level represents the remaining amount of fuel available for the drone's 
+     * operations such as movement and other tasks that consume fuel.
+     *
+     * @return the current fuel level as a double value, where the unit corresponds 
+     *         to the drone's configured measurement system.
+     */
     public double getFuel() { return fuel; }
 
     /**
@@ -193,7 +234,7 @@ public class DroneSubsystem implements Runnable {
      * state (e.g., faulted or en route) and dispatching the necessary updates or fault reports.
      * If no task is available in the queue within the specified timeout, the drone remains idle.
      *
-     * @return {@code true} if the state was successfully handled;
+     * @return {@code true} if the state was successfully handled; 
      *         {@code false} if the thread was interrupted while waiting for a task.
      */
     private boolean handleIdleState() {
@@ -225,9 +266,9 @@ public class DroneSubsystem implements Runnable {
 
     /**
      * Handles the drone's behaviour while it is in the "en-route" state.
-     * This method calculates a target position based on the current task's zone
-     * and processes any faults that may occur during the en-route phase.
-     * Depending on the fault type, it may simulate a stuck fault, send corrupted
+     * This method calculates a target position based on the current task's zone 
+     * and processes any faults that may occur during the en-route phase. 
+     * Depending on the fault type, it may simulate a stuck fault, send corrupted 
      * packets, handle packet loss, or simply update the drone's position.
      * <p>
      * Fault handling includes:
@@ -258,8 +299,8 @@ public class DroneSubsystem implements Runnable {
     /**
      * Handles the transition of the drone into the "Arrived" state.
      * <p>
-     * This method is triggered when the drone reaches its destination and begins
-     * preparing to perform its task, such as dropping an agent. The method performs
+     * This method is triggered when the drone reaches its destination and begins 
+     * preparing to perform its task, such as dropping an agent. The method performs 
      * the following actions:
      * <p>
      * 1. Deducts a one-time battery cost associated with opening the nozzle.
@@ -282,8 +323,8 @@ public class DroneSubsystem implements Runnable {
 
     /**
      * Handles the dropping water operation for the drone. This method executes the process
-     * of releasing water from the drone, ensuring that the necessary states and resources
-     * are updated accordingly. If a fault is detected during execution, appropriate fault
+     * of releasing water from the drone, ensuring that the necessary states and resources 
+     * are updated accordingly. If a fault is detected during execution, appropriate fault 
      * handling logic is triggered.
      * <p>
      * Faults:
@@ -292,14 +333,14 @@ public class DroneSubsystem implements Runnable {
      *   and invokes the soft fault handling mechanism.
      * <p>
      * Normal Operation:
-     * - Logs the start of the water drop process and waits for the water-dropping delay
+     * - Logs the start of the water drop process and waits for the water-dropping delay 
      *   to simulate water release.
      * - Logs the completion of the water drop process, sets the drone's water level to zero,
-     *   depletes the battery by an amount defined for closing the nozzle, updates the
+     *   depletes the battery by an amount defined for closing the nozzle, updates the 
      *   state to {@code DroneState.COMPLETED}, and sends a status update.
      * <p>
      * Exception Handling:
-     * - Handles {@code InterruptedException} by restoring the interrupt status, setting the
+     * - Handles {@code InterruptedException} by restoring the interrupt status, setting the 
      *   drone's state to {@code DroneState.FAULTED}, and sending a status update.
      * <p>
      * Preconditions:
@@ -307,7 +348,7 @@ public class DroneSubsystem implements Runnable {
      * <p>
      * Postconditions:
      * - The drone's state is updated based on the success or failure of the operation.
-     * - Relevant faults and resource changes (e.g., water depletion and battery drain)
+     * - Relevant faults and resource changes (e.g., water depletion and battery drain) 
      *   are logged and applied.
      */
     private void handleDroppingAgentState() {
@@ -325,7 +366,7 @@ public class DroneSubsystem implements Runnable {
             Thread.sleep(WATER_DROP_DELAY_MS);
             LOGGER.log(Level.INFO, "[Drone {0}] Water drop complete!", droneId);
             water = 0;
-            drainBattery(DroneConfig.BATTERY_NOZZLE_CLOSE_PCT); // Nozzle close — one-time battery cost
+            drainBattery(DroneConfig.BATTERY_NOZZLE_CLOSE_PCT); // Nozzle close — one-time battery cost 
             state = DroneState.COMPLETED;
             sendStatusUpdate();
         } catch (InterruptedException e) {
@@ -370,7 +411,7 @@ public class DroneSubsystem implements Runnable {
      * - Checks if the scheduler sender is available. If not, the method returns without taking action.
      * - Identifies the active fault type for the current task, defaulting to NONE if no task is associated.
      * - Handles the PACKET_LOSS fault type by intentionally dropping every other status update packet.
-     * - Constructs a {@code DroneUpdate} that contains details about the drone's current state,
+     * - Constructs a {@code DroneUpdate} that contains details about the drone's current state, 
      *   including its identifier, position, and resource levels.
      * - Sends the status update packet using the scheduler sender. If sending fails, logs an error message.
      */
@@ -388,7 +429,7 @@ public class DroneSubsystem implements Runnable {
         }
 
         DroneUpdate update = new DroneUpdate(droneId, state, xPos, yPos, water, battery, fuel);
-
+        
         try { schedulerSender.send(PacketBuilder.build(update)); }
         catch (IOException e) { LOGGER.log(Level.SEVERE, "[Drone {0}] Failed to send status update: {1}", new Object[]{droneId, e.getMessage()}); }
     }
@@ -413,10 +454,10 @@ public class DroneSubsystem implements Runnable {
      * This method ensures that a corrupted packet is sent only once by maintaining a flag.
      * <p>
      * The corrupted packet data is predefined as "CORRUPTED_PACKET_DATA" and encoded using UTF-8.
-     * If the scheduler sender is null or if the corrupted packet has already been sent,
+     * If the scheduler sender is null or if the corrupted packet has already been sent, 
      * the method will return without taking any action.
      * <p>
-     * In case of an {@link IOException} during the sending process, an error is logged with
+     * In case of an {@link IOException} during the sending process, an error is logged with 
      * the relevant drone ID and the exception message.
      */
     private void sendCorruptedPacket() {
@@ -455,10 +496,10 @@ public class DroneSubsystem implements Runnable {
             double stepDist = Math.min(dist, speed);
             xPos += (deltaX / dist) * stepDist;
             yPos += (deltaY / dist) * stepDist;
-
+            
             drainBattery(DroneConfig.BATTERY_FLIGHT_DRAIN_RATE_PCT_PER_SEC * (STEP_MS / 1000.0));
             drainFuel(DroneConfig.FUEL_PER_METRE_PCT * stepDist);
-
+            
             if (dist < 50) speed = 1; // Simplify speed logic
             if (state == DroneState.RETURNING && dist < 50) speed = 3;
 
@@ -488,9 +529,9 @@ public class DroneSubsystem implements Runnable {
     }
 
     /**
-     * Simulates a "stuck" fault scenario for the drone during a flight operation.
-     * This method assumes the drone gets stuck mid-flight, transitions the drone
-     * to a faulted state, sends relevant fault reports and status updates, and
+     * Simulates a "stuck" fault scenario for the drone during a flight operation. 
+     * This method assumes the drone gets stuck mid-flight, transitions the drone 
+     * to a faulted state, sends relevant fault reports and status updates, and 
      * automatically resets the drone after a pre-defined period.
      *
      * @param targetX the target X-coordinate that the drone is flying towards when the fault is triggered
@@ -499,7 +540,7 @@ public class DroneSubsystem implements Runnable {
     private void simulateStuckFault(double targetX, double targetY) {
         stuckFaultTriggered = true;
         if (flyAway(targetX, targetY, 0.4)) return;
-
+        
         state = DroneState.FAULTED;
         sendStatusUpdate();
         sendFaultReport(FaultTypes.DRONE_STUCK, "Drone stuck mid-flight; auto-reset in " + (STUCK_FAULT_MS / 1000) + "s");
@@ -521,7 +562,7 @@ public class DroneSubsystem implements Runnable {
      * The drone attempts to fly towards the specified target coordinates, and if successful,
      * it applies a deceleration fuel surcharge upon reaching the zone.
      * Updates the drone state to 'ARRIVED' and sends a status update after arrival.
-     *
+     * 
      * @throws NullPointerException if the current target centre is null.
      */
     private void updatePosition() throws NullPointerException {

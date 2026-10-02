@@ -243,8 +243,8 @@ class DroneStatusMetricsTest {
                     new AssignTask(droneId, 2, 0, 0, 100, 100, Severity.LOW, FaultTypes.NONE));
             fakeScheduler.send(new DatagramPacket(t1Bytes, t1Bytes.length,
                     InetAddress.getLoopbackAddress(), dronePort));
-            // Send the second task after the first drone starts its drop. Sending it
-            // during EN_ROUTE intentionally redirects the active mission instead.
+            // During EN_ROUTE, a second task redirects the active mission.
+            // Send it during the drop to exercise queueing instead.
             List<DroneUpdate> allUpdates = new ArrayList<>();
             boolean secondTaskSent = false;
             for (int i = 0; i < 800; i++) {
