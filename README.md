@@ -184,8 +184,8 @@ state handling. I check the rendered dashboard in a desktop session.
 
 GitHub Actions runs all 120 tests headless on every push and pull request.
 `mvn verify` also writes a JaCoCo coverage report to `target/site/jacoco/`.
-Line coverage is 84% outside the Swing UI package: 87% for the scheduler and
-97% for the UDP and messaging code.
+Line coverage is 83% outside the Swing UI and benchmark packages: 84% for
+the scheduler and 97% for the UDP and messaging code.
 
 ## Demo, reports, and design documents
 
