@@ -29,14 +29,15 @@ jobs:
           def pct(rows, kind):
               missed = sum(int(r[kind + '_MISSED']) for r in rows)
               covered = sum(int(r[kind + '_COVERED']) for r in rows)
-              return 100 * covered / (missed + covered)
+              total = missed + covered
+              return f'{100 * covered / total:.0f}%' if total else 'n/a'
           print('## Coverage\n')
           print('| Package | Line | Branch |')
           print('| --- | --- | --- |')
           for pkg in sorted({r['PACKAGE'] for r in rows}):
               sub = [r for r in rows if r['PACKAGE'] == pkg]
-              print(f'| {pkg} | {pct(sub, "LINE"):.0f}% | {pct(sub, "BRANCH"):.0f}% |')
-          print(f'| **Total** | **{pct(rows, "LINE"):.0f}%** | **{pct(rows, "BRANCH"):.0f}%** |')
+              print(f'| {pkg} | {pct(sub, "LINE")} | {pct(sub, "BRANCH")} |')
+          print(f'| **Total** | **{pct(rows, "LINE")}** | **{pct(rows, "BRANCH")}** |')
           PY
 
       - name: Upload coverage report
